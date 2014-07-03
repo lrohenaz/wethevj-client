@@ -43,7 +43,7 @@
           <paper-item label="SEARCH" icon="search" id="6" on-click="{{ menuClick }}" center horizontal layout center-justified></paper-item>
         </core-menu>
       </core-header-panel>
-      <div id="div" tool><div horizontal layout flex>{{ $.core_menu.selectedItem.label }}</div><div><facebook-login appID="776464115710177"></facebook-login></div></div>
+      <div id="div" tool><div horizontal layout flex>{{ $.core_menu.selectedItem.label }}</div></div>
       <core-pages selected="{{ $.core_menu.selectedItem.id }}" selectedindex="0" notap id="core_pages">
         <section id="playlist_page" active>
           <h1>PLAYLIST</h1>
@@ -62,6 +62,7 @@
         </section>
         <section id="favorites_page">
           <h1>FAVORITES</h1>
+          <div><facebook-login appID="776464115710177"></facebook-login></div>
         </section>
         <section id="chat_page">
           <!-- CHAT -->

@@ -9,6 +9,7 @@
     "test",
     "tests"
   ],
+  "main": "wethevj-client.html",
   "dependencies": {
     "polymer": "Polymer/polymer#~0.3.3",
     "core-menu": "Polymer/core-menu#~0.3.3",
