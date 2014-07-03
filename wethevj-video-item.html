@@ -1,0 +1,63 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../polymer-ui-ratings/polymer-ui-ratings.html">
+<link rel="import" href="../polymer-ui-card/polymer-ui-card.html">
+<link rel="import" href="../core-icon-button/core-icon-button.html">
+<!--
+##### Example
+
+    <wethevj-video-item></wethevj-video-item>
+
+@element wethevj-video-item
+@blurb Element providing solution to [...].
+@status [...]
+@homepage https://.../wethevj-video-item
+-->
+
+<polymer-element name="wethevj-video-item" attributes="video">
+          <template id="template">
+            <style type="text/css">
+            .crop {
+                width: 250px;
+                overflow: hidden;
+              	margin-right:0px;
+            }
+            .crop img {
+                margin: -20px;
+            }
+            polymer-ui-card {
+              display: block;
+              max-width:605px;
+              margin: 20px auto;
+              padding: 30px;
+            } 
+            </style>
+          <polymer-ui-card vertical layout>
+            <div horizontal layout>
+              <div>
+                <div class="crop"><img class="ty_img" width="250" src="{{video.media$group.media$thumbnail[0].url||video.snippet.thumbnails.medium.url}}" /></div>
+          	  </div>
+          	  <div  style="padding-right:10px;" flex>
+                <h3>{{video.title.$t||video.snippet.title}}</h3>
+          	    <span>{{video.published.$t||video.snippet.publishedAt}}</span><br />
+          	    <span>{{video.content.$t||video.snippet.description}}</span>
+          	  </div>
+            </div>
+          <div horizontal layout start>
+            <div style="height:100%:" vertical layout>
+            RATING
+            </div>
+            <div horizontal end-justified layout flex>
+              <div horizontal center-justified layout>
+                <core-icon-button icon="theaters"></core-icon-button><core-icon-button icon="favorite-outline"></core-icon-button><core-icon-button icon="av:play-arrow"></core-icon-button>
+              </div>
+            </div>
+          </polymer-ui-card>
+        </template>
+  <script>
+    Polymer('wethevj-video-item', {
+      ready: function() {
+        
+      }
+    });
+  </script>
+</polymer-element>
