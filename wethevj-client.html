@@ -111,8 +111,8 @@
           console.log(rs.response);
     	},
       playlistResponse: function (e,rs) {
-          this.playlist_videos=rs.response;
-          console.log(rs.response);
+          this.playlist_videos=rs;
+          console.log(e);
     	},
     	queryChanged: function(attr,newval,oldval) {
     	  /* not sure why but oldval is all that works, newval has a big object in it */
