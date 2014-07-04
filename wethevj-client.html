@@ -50,7 +50,7 @@
           <h1>PLAYLIST</h1>
           <polymer-ajax id="playlist_ajax" auto url="http://wethevj.com/wethevj/rpc.php" params='{"action":"get_queue", "type" : "csv", "channel":"{{channel}}"}' handleas="json" on-polymer-response="{{ playlistResponse }}">
           </polymer-ajax>
-            <polymer-ajax id="playlist_yt_ajax" auto url="https://www.googleapis.com/youtube/v3/videos" params='{"id":"{{playlist_vids}}", "key":"AIzaSyCP-KyJTdtbCJOSE6CHfSH-PvJeJlFVjUc", "part":"snippet"}' handleas="json" on-polymer-response="{{ playlistYtResponse }}" unresolved>
+            <polymer-ajax id="playlist_yt_ajax" auto url="https://www.googleapis.com/youtube/v3/videos" params='{"id":"{{playlist_vids}}", "key":"AIzaSyCP-KyJTdtbCJOSE6CHfSH-PvJeJlFVjUc", "part":"snippet"}' handleas="json" on-polymer-response="{{ playlistYtResponse }}">
           </polymer-ajax>
           
           <template id="template" repeat="{{video in playlist_videos.items}}">
@@ -59,7 +59,7 @@
         </section>
         <section id="explore_page">
           <!-- EXPLORE -->
-          <polymer-ajax id="ajxp" auto url="https://www.googleapis.com/youtube/v3/search" params='{"key":"AIzaSyCP-KyJTdtbCJOSE6CHfSH-PvJeJlFVjUc", "regionCode" : "US", "videoEmbeddable" : "true", "maxResults" : "25", "order" : "rating", "type" : "video", "videoCategoryId" : "10", "part":"snippet"}' handleas="json" on-polymer-response="{{ exploreResponse }}" unresolved>
+          <polymer-ajax id="ajxp" auto url="https://www.googleapis.com/youtube/v3/search" params='{"key":"AIzaSyCP-KyJTdtbCJOSE6CHfSH-PvJeJlFVjUc", "regionCode" : "US", "videoEmbeddable" : "true", "maxResults" : "25", "order" : "rating", "type" : "video", "videoCategoryId" : "10", "part":"snippet"}' handleas="json" on-polymer-response="{{ exploreResponse }}">
           </polymer-ajax>
           
           <template repeat="{{video in explore_videos.items}}">
