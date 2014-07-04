@@ -50,8 +50,7 @@
           <h1>PLAYLIST</h1>
           <polymer-ajax id="playlist_ajax" auto url="http://wethevj.com/wethevj/rpc.php" params='{"action":"get_queue", "type" : "csv", "channel":"{{channel}}"}' handleas="json" on-polymer-response="{{ playlistResponse }}">
           </polymer-ajax>
-            <!--  /* tested valid: https://www.googleapis.com/youtube/v3/videos?id=I0xGQYVIhEs,FZYrlKbkLe8&key=AIzaSyCP-KyJTdtbCJOSE6CHfSH-PvJeJlFVjUc&part=snippet */ -->
-            <polymer-ajax id="playlist_yt_ajax" auto url="https://www.googleapis.com/youtube/v3/videos" params='{"id":"{{playlist_vids}}", "key":"AIzaSyCP-KyJTdtbCJOSE6CHfSH-PvJeJlFVjUc", "part":"snippet"}' handleas="json" on-polymer-response="{{ playlistYtResponse }}">
+            <polymer-ajax id="playlist_yt_ajax" auto url="https://www.googleapis.com/youtube/v3/videos" params='{"id":"{{playlist_vids}}", "key":"AIzaSyCP-KyJTdtbCJOSE6CHfSH-PvJeJlFVjUc", "part":"snippet"}' handleas="json" on-polymer-response="{{ playlistYtResponse }}" unresolved>
           </polymer-ajax>
           
           <template id="template" repeat="{{video in playlist_videos}}">
