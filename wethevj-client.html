@@ -102,6 +102,14 @@
           this.explore_videos=rs.response;
           console.log(rs.response);
     	},
+      playlistResponse: function (e,rs) {
+          this.playlist_vids=e.detail.response;
+          console.log(rs);
+    	},
+    	playlistYtResponse: function(e,rs) {
+    	    this.playlist_videos=rs.response;
+          console.log(rs);
+    	},
     	queryChanged: function(attr,newval,oldval) {
     	  /* not sure why but oldval is all that works, newval has a big object in it */
     	  if(newval!="") {
