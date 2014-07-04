@@ -1,11 +1,3 @@
-
-#polymer_ui_tabs {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-}
 #paper_ripple {
   width: 100%;
   height: 100%;
@@ -40,35 +32,5 @@
 }
 #paper_item3 {
   padding: 5px;
-}
-#polymer_ui_pages {
-  width: 100%;
-  height: 100%;
-  display: block;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-}
-#core_pages {
-  width: 100%;
-  border: 1px solid silver;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-}
-#section {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-}
-#paper_input {
-}
-#search {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
+  
 }
