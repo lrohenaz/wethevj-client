@@ -27,6 +27,8 @@
     "core-header-panel": "Polymer/core-header-panel#~0.3.3",
     "core-scaffold": "Polymer/core-scaffold#~0.3.3",
     "socket-connection": "FWeinb/socket-connection#master",
-    "facebook-login": "https://github.com/davidwittenbrink/facebook-login.git"
+    "facebook-login": "https://github.com/davidwittenbrink/facebook-login.git",
+    "x-paginator": "~0.0.2",
+    "sortable-table": "~0.7.0"
   }
 }

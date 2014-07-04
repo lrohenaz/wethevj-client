@@ -18,6 +18,7 @@
 <link rel="import" href="../socket-connection/socket-connection.html">
 <link rel="import" href="../wethevj-client/wethevj-video-item.html">
 <link rel="import" href="../facebook-login/facebook-login.html">
+
 <polymer-element name="wethevj-client" attributes="query page">
 
   <template>
@@ -53,9 +54,11 @@
           <!-- EXPLORE -->
                     <polymer-ajax id="ajxp" auto url="https://www.googleapis.com/youtube/v3/search" params='{"key":"AIzaSyCP-KyJTdtbCJOSE6CHfSH-PvJeJlFVjUc", "regionCode" : "US", "videoEmbeddable" : "true", "maxResults" : "25", "order" : "rating", "type" : "video", "videoCategoryId" : "10", "part":"snippet"}' handleas="json" on-polymer-response="{{ exploreResponse }}">
                     </polymer-ajax>
+                    
                     <template repeat="{{video in explore_videos.items}}">
                       <wethevj-video-item video="{{video}}"></wethevj-video-item>
                     </template>
+                    
         </section>
         <section id="history_page">
           <h1>HISTORY</h1>
