@@ -111,7 +111,7 @@
           console.log(rs.response);
     	},
       playlistResponse: function (e,rs) {
-          this.playlist_videos=rs;
+          this.playlist_videos=e.detail.response;
           console.log(e);
     	},
     	queryChanged: function(attr,newval,oldval) {
