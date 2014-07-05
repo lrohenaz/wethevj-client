@@ -71,13 +71,12 @@
     Polymer('wethevj-video-item', {
       ready: function() {
         
+      },
+      toggleVidDialog: function() {
+        var videoDialog = this.shadowRoot.querySelector('#videoDialog');
+        videoDialog.toggle=true;        
       }
     });
   </script>
-  <script>
-    function toggleVidDialog() {
-      var videoDialog = this.shadowRoot.querySelector('#videoDialog');
-      videoDialog.toggle=true;
-    });
-  </script>
+
 </polymer-element>
