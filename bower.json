@@ -24,7 +24,9 @@
     "sortable-table": "~0.7.0",
     "x-paginator": "~0.0.2",
     "paper-button": "Polymer/paper-button#~0.3.3",
-    "polymer-ajax": "Polymer/polymer-ajax#~0.3.0"
+    "polymer-ajax": "Polymer/polymer-ajax#~0.3.0",
+    "wethevj-client": "https://github.com/lrohenaz/wethevj-client.git",
+    "facebook-login": "davidwittenbrink/facebook-login#master"
   },
   "resolutions": {
     "polymer": "~0.3.3",
