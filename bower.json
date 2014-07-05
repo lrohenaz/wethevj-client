@@ -31,5 +31,10 @@
     "x-paginator": "~0.0.2",
     "sortable-table": "~0.7.0",
     "paper-dialog": "Polymer/paper-dialog#~0.3.3"
+  },
+  "resolutions": {
+    "polymer": "~0.3.3",
+    "platform": ">=0.3.0 <1.0.0",
+    "core-component-page": ">=0.3.0 <1.0.0"
   }
 }
