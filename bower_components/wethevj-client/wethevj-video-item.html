@@ -1,0 +1,103 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../polymer-ui-ratings/polymer-ui-ratings.html">
+<link rel="import" href="../polymer-ui-card/polymer-ui-card.html">
+<link rel="import" href="../core-icon-button/core-icon-button.html">
+<link rel="import" href="../paper-dialog/paper-dialog.html">
+<link rel="import" href="../paper-button/paper-button.html">
+<!--
+##### Example
+
+    <wethevj-video-item></wethevj-video-item>
+
+@element wethevj-video-item
+@blurb Element providing solution to [...].
+@status [...]
+@homepage https://.../wethevj-video-item
+-->
+
+<polymer-element name="wethevj-video-item" attributes="video vid" unresolved>
+          <template id="template">
+            <style type="text/css">
+            wethevj-video-item {
+              opacity: 1;
+              transition: opacity 300ms;
+            }
+            wethevj-video-item:unresolved {
+              opacity: 0;
+            }
+            .crop {
+                width: 250px;
+                overflow: hidden;
+              	margin-right:0px;
+            }
+            .crop img {
+                margin: -20px;
+            }
+            polymer-ui-card {
+              display: block;
+              max-width:605px;
+              margin: 20px auto;
+              padding: 30px;
+            } 
+            </style>
+          <polymer-ui-card vertical layout>
+            <div horizontal layout>
+              <div>
+                <div class="crop"><img class="ty_img" width="250" src="{{video.media$group.media$thumbnail[0].url||video.snippet.thumbnails.medium.url}}" /></div>
+          	  </div>
+          	  <div  style="padding-right:10px;" flex>
+                <h3>{{video.title.$t||video.snippet.title}}</h3>
+          	    <span>{{video.published.$t||video.snippet.publishedAt}}</span><br />
+          	    <span>{{video.content.$t||video.snippet.description}}</span>
+          	  </div>
+            </div>
+          <div horizontal layout start>
+            <div style="height:100%:" vertical layout>
+            RATING
+            </div>
+            <div horizontal end-justified layout flex>
+              <div horizontal center-justified layout>
+                <paper-button icon="theaters" on-click="{{toggleVidDialog}}"></paper-button><core-icon-button icon="favorite-outline"></core-icon-button><core-icon-button icon="av:play-arrow"></core-icon-button>
+                  <paper-dialog heading="Dialog" id="preview_{{vid}}" transition="paper-dialog-transition-center">
+
+                    <object height="350" width="425">
+                      <param name="movie" value="http://www.youtube.com/v/{{vid}}" />
+                      <embed height="350" src="http://www.youtube.com/v/{{vid}}?showinfo=no&autoplay=1&&iv_load_policy=3&fs=0&rel=0&showsearch=0&hd=1" type="application/x-shockwave-flash" width="425"></embed>
+                    </object>
+  
+                    <paper-button label="More Info..." dismissive></paper-button>
+                    <paper-button label="Decline" affirmative></paper-button>
+                    <paper-button label="Accept" affirmative default></paper-button>
+                
+                  </paper-dialog>
+
+              </div>
+            </div>
+          </polymer-ui-card>
+        </template>
+  <script>
+    Polymer('wethevj-video-item', {
+      ready: function() {
+        this.vid = this.video.id;
+        
+        if(this.video.id.$t) {
+          console.log("old school youtube feed detected");
+          var n = this.video.id.$t.lastIndexOf('/');
+          this.vid = this.video.id.$t.substring(n + 1);
+          console.log("Id alone is "+ this.vid);
+        }
+        if(this.video.id.videoId) {
+          console.log("object as id detected");
+          this.vid = this.video.id.videoId;
+        }
+        
+      },
+      toggleVidDialog: function() {
+        console.log("Toggle the vid");
+        var videoDialog = this.shadowRoot.querySelector('#preview_'+this.vid);
+        videoDialog.toggle();      
+      }
+    });
+  </script>
+
+</polymer-element>
