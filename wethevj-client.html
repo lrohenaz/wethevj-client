@@ -15,10 +15,10 @@
 <link rel="import" href="../core-icons/iconsets/av-icons.html" />
 <link rel="import" href="../polymer-ui-ratings/polymer-ui-ratings.html" />
 <link rel="import" href="../font-roboto/roboto.html" />
-<link rel="import" href="../wethevj-client/wethevj-video-item.html">
-<link rel="import" href="../facebook-login/facebook-login.html">
-<polymer-element name="wethevj-client" attributes="query page channel">
+<link rel="import" href="../wethevj-client/wethevj-video-item.html" />
+<link rel="import" href="../facebook-login/facebook-login.html" />
 
+<polymer-element name="wethevj-client" attributes="query page channel">
   <template>
     <style type="text/css">
     :host {
@@ -40,9 +40,10 @@
           <paper-item label="CHATROOM" icon="account-circle" id="4" on-click="{{ menuClick }}" center horizontal layout center-justified></paper-item>
           <paper-item label="SETTINGS" icon="settings" id="5" on-click="{{ menuClick }}" center horizontal layout center-justified></paper-item>
           <paper-item label="SEARCH" icon="search" id="6" on-click="{{ menuClick }}" center horizontal layout center-justified></paper-item>
+          <facebook-login appID="546051685467074"></facebook-login>
         </core-menu>
       </core-header-panel>
-      <div id="div" tool><div horizontal layout flex>{{ $.core_menu.selectedItem.label }}<facebook-login appID="546051685467074"></facebook-login></div><div right justified layout></div></div>
+      <div id="div" tool><div horizontal layout flex>{{ $.core_menu.selectedItem.label }}</div></div>
       <core-pages selected="{{ $.core_menu.selectedItem.id }}" selectedindex="0" notap id="core_pages">
         <section id="playlist_page" active>
           <h1>PLAYLIST</h1>
