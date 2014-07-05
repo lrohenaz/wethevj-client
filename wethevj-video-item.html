@@ -15,7 +15,7 @@
 @homepage https://.../wethevj-video-item
 -->
 
-<polymer-element name="wethevj-video-item" attributes="video">
+<polymer-element name="wethevj-video-item" attributes="video vid">
           <template id="template">
             <style type="text/css">
             .crop {
@@ -71,7 +71,6 @@
   <script>
     Polymer('wethevj-video-item', {
       ready: function() {
-        var vid='';
       },
       toggleVidDialog: function() {
         if(this.video.id.$t) {
