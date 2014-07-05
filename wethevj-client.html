@@ -57,7 +57,7 @@
         </section>
         <section id="explore_page">
           <!-- EXPLORE -->
-          <polymer-ajax id="ajxp" auto url="https://www.googleapis.com/youtube/v3/search" params='{"key":"AIzaSyCP-KyJTdtbCJOSE6CHfSH-PvJeJlFVjUc", "regionCode" : "US", "videoEmbeddable" : "true", "maxResults" : "25", "order" : "rating", "type" : "video", "videoCategoryId" : "10", "part":"snippet"}' handleas="json" on-polymer-response="{{ exploreResponse }}">
+          <polymer-ajax id="explore_axap" auto url="https://www.googleapis.com/youtube/v3/search" params='{"key":"AIzaSyCP-KyJTdtbCJOSE6CHfSH-PvJeJlFVjUc", "regionCode" : "US", "videoEmbeddable" : "true", "maxResults" : "25", "order" : "rating", "type" : "video", "videoCategoryId" : "10", "part":"snippet"}' handleas="json" on-polymer-response="{{ exploreResponse }}">
           </polymer-ajax>
           
           <template repeat="{{video in explore_videos.items}}">
@@ -67,6 +67,13 @@
         </section>
         <section id="history_page">
           <h1>HISTORY</h1>
+          <polymer-ajax id="history_ajax" auto url="http://wethevj.com/wethevj/rpc.php" params='{"action":"get_history", "type" : "csv", "channel":"{{channel}}"}' handleas="json" on-polymer-response="{{ historyResponse }}">
+          </polymer-ajax>
+          <polymer-ajax id="history_yt_ajax" auto url="https://www.googleapis.com/youtube/v3/videos" params='{"id":"{{history_vids}}", "key":"AIzaSyCP-KyJTdtbCJOSE6CHfSH-PvJeJlFVjUc", "part":"snippet"}' handleas="json" on-polymer-response="{{ historyYtResponse }}">
+          </polymer-ajax>
+          <template repeat="{{video in history_videos.items}}">
+            <wethevj-video-item video="{{video}}"></wethevj-video-item>
+          </template>
         </section>
         <section id="favorites_page">
           <h1>FAVORITES</h1>
@@ -115,6 +122,14 @@
     	},
     	playlistYtResponse: function(e,rs) {
     	    this.playlist_videos=rs.response;
+          console.log(rs);
+    	},
+      historyResponse: function (e,rs) {
+          this.history_vids=e.detail.response;
+          console.log(rs);
+    	},
+    	historyYtResponse: function(e,rs) {
+    	    this.history_videos=rs.response;
           console.log(rs);
     	},
     	queryChanged: function(attr,newval,oldval) {
