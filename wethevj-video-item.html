@@ -71,7 +71,7 @@
   <script>
     Polymer('wethevj-video-item', {
       ready: function() {
-        if(this.video.id.$t!='') {
+        if(this.video.id.$t) {
           console.log("old school youtube feed detected");
           var n = this.video.id.$t.lastIndexOf('/');
           var result = this.video.id.$t.substring(n + 1);
