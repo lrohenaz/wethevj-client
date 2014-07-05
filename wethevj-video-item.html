@@ -51,7 +51,7 @@
             <div horizontal end-justified layout flex>
               <div horizontal center-justified layout>
                 <paper-button icon="theaters" on-click="{{toggleVidDialog}}"></paper-button><core-icon-button icon="favorite-outline"></core-icon-button><core-icon-button icon="av:play-arrow"></core-icon-button>
-                  <paper-dialog heading="Dialog" transition="paper-dialog-transition-center">
+                  <paper-dialog heading="Dialog" id="preview_{{vid}}" transition="paper-dialog-transition-center">
 
                     <object height="350" width="425">
                       <param name="movie" value="http://www.youtube.com/v/{{vid}}" />
@@ -87,7 +87,7 @@
       },
       toggleVidDialog: function() {
         console.log("Toggle the vid");
-        var videoDialog = this.shadowRoot.querySelector('paper-dialog');
+        var videoDialog = this.shadowRoot.querySelector('#preview_'+vid);
         videoDialog.toggle();      
       }
     });
