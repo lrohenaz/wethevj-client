@@ -67,7 +67,7 @@
         </section>
         <section id="history_page">
           <h1>HISTORY</h1>
-          <polymer-ajax id="history_ajax" auto url="http://wethevj.com/wethevj/rpc.php" params='{"action":"get_history", "type" : "csv", "channel":"{{channel}}"}' handleas="json" on-polymer-response="{{ historyResponse }}">
+          <polymer-ajax id="history_ajax" auto url="http://wethevj.com/wethevj/rpc.php" params='{"action":"get_history", "type" : "csv", "filter" : "youtube", "channel":"{{channel}}"}' handleas="json" on-polymer-response="{{ historyResponse }}">
           </polymer-ajax>
           <polymer-ajax id="history_yt_ajax" auto url="https://www.googleapis.com/youtube/v3/videos" params='{"id":"{{history_vids}}", "key":"AIzaSyCP-KyJTdtbCJOSE6CHfSH-PvJeJlFVjUc", "part":"snippet"}' handleas="json" on-polymer-response="{{ historyYtResponse }}">
           </polymer-ajax>
