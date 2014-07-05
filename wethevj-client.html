@@ -108,6 +108,9 @@
           this.page="PLAYLIST";
           this.channel="unity88";
       },
+      menuClick: function() {
+          this.$.core-scaffold.closeDrawer;
+      },
       searchResponse: function (e,rs) {
           this.search_videos=rs.response;
           console.log(rs.response);
