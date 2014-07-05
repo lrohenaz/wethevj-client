@@ -71,9 +71,7 @@
   <script>
     Polymer('wethevj-video-item', {
       ready: function() {
-      },
-      toggleVidDialog: function() {
-        if(this.video.id.$t) {
+      if(this.video.id.$t) {
           console.log("old school youtube feed detected");
           var n = this.video.id.$t.lastIndexOf('/');
           vid = this.video.id.$t.substring(n + 1);
@@ -86,6 +84,8 @@
           vid = this.video.id;
         } 
         
+      },
+      toggleVidDialog: function() {
         console.log("Toggle the vid");
         // var videoDialog = this.shadowRoot.querySelector('#videoDialog'+(this.video.id.videoId||this.video.id));
         var videoDialog = this.shadowRoot.querySelector('paper-dialog');
