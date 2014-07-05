@@ -51,7 +51,9 @@
             <polymer-ajax id="playlist_yt_ajax" auto url="https://www.googleapis.com/youtube/v3/videos" params='{"id":"{{playlist_vids}}", "key":"AIzaSyCP-KyJTdtbCJOSE6CHfSH-PvJeJlFVjUc", "part":"snippet"}' handleas="json" on-polymer-response="{{ playlistYtResponse }}">
           </polymer-ajax>
           
-          
+          <template repeat="{{video in playlist_videos.items}}">
+            <wethevj-video-item video="{{video}}"></wethevj-video-item>
+          </template>
         </section>
         <section id="explore_page">
           <!-- EXPLORE -->
@@ -112,7 +114,7 @@
           console.log(rs);
     	},
     	playlistYtResponse: function(e,rs) {
-    	    /* this.playlist_videos=rs.response; */
+    	    this.playlist_videos=rs.response;
           console.log(rs);
     	},
     	queryChanged: function(attr,newval,oldval) {
