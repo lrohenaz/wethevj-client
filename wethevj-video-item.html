@@ -75,7 +75,7 @@
       },
       toggleVidDialog: function() {
         console.log("Toggle the vid");
-        var videoDialog = this.shadowRoot.querySelector('#videoDialog'+(this.video.id||this.video.id.videoId));
+        var videoDialog = this.shadowRoot.querySelector('#videoDialog'+(this.video.id.videoId||this.video.id));
         videoDialog.toggle();        
       }
     });
