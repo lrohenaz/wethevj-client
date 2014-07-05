@@ -50,7 +50,7 @@
             </div>
             <div horizontal end-justified layout flex>
               <div horizontal center-justified layout>
-                <paper-button icon="theaters" on-click="{{toggleVidDialog}}"></paper-button><core-icon-button icon="favorite-outline"></core-icon-button><core-icon-button icon="av:play-arrow"></core-icon-button>
+                <paper-button icon="theaters" on-click="popupVideo({{video.id}})">
                   <paper-dialog heading="Dialog" id="videoDialog" name="videoDialog" transition="paper-dialog-transition-center">
 
                     <object height="350" width="425">
@@ -63,6 +63,8 @@
                     <paper-button label="Accept" affirmative default></paper-button>
                 
                   </paper-dialog>
+                </paper-button><core-icon-button icon="favorite-outline"></core-icon-button><core-icon-button icon="av:play-arrow"></core-icon-button>
+                  
 
               </div>
             </div>
@@ -75,10 +77,12 @@
       },
       toggleVidDialog: function() {
         console.log("Toggle the vid");
-        var videoDialog = this.shadowRoot.querySelector('#videoDialog');
+        var videoDialog = this.querySelector('paper-dialog');
         videoDialog.toggle();        
       }
     });
   </script>
-
+  <script>
+    
+  </script>
 </polymer-element>
