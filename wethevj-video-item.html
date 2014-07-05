@@ -71,25 +71,24 @@
   <script>
     Polymer('wethevj-video-item', {
       ready: function() {
-      if(this.video.id.$t) {
+        this.vid = this.video.id;
+        
+        if(this.video.id.$t) {
           console.log("old school youtube feed detected");
           var n = this.video.id.$t.lastIndexOf('/');
           this.vid = this.video.id.$t.substring(n + 1);
+          console.og("Id alone is "+ vid);
         }
-        else if(this.video.id.videoId) {
+        if(this.video.id.videoId) {
           console.log("object as id detected");
           this.vid = this.video.id.videoId;
         }
-        else {
-          this.vid = this.video.id;
-        } 
         
       },
       toggleVidDialog: function() {
         console.log("Toggle the vid");
-        // var videoDialog = this.shadowRoot.querySelector('#videoDialog'+(this.video.id.videoId||this.video.id));
         var videoDialog = this.shadowRoot.querySelector('paper-dialog');
-        videoDialog.toggle();        
+        videoDialog.toggle();      
       }
     });
   </script>
