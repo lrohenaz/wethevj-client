@@ -75,7 +75,12 @@
       },
       toggleVidDialog: function() {
         console.log("Toggle the vid");
-        var videoDialog = this.shadowRoot.querySelector('#videoDialog'+(this.video.id.videoId||this.video.id));
+        /* old youtube api doesnt have id easy to find, so we strip it from the link they provide which includes the id */
+        if(this.video.id.$t) {
+          var n = str.lastIndexOf('/');
+          var result = str.substring(n + 1);
+        }
+        var videoDialog = this.shadowRoot.querySelector('#videoDialog'+(this.video.id.videoId||result||this.video.id));
         videoDialog.toggle();        
       }
     });
