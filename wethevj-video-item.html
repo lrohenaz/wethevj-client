@@ -18,6 +18,13 @@
 <polymer-element name="wethevj-video-item" attributes="video vid">
           <template id="template">
             <style type="text/css">
+            wethevj-video-item {
+              opacity: 1;
+              transition: opacity 300ms;
+            }
+            wethevj-video-item:unresolved {
+              opacity: 0;
+            }
             .crop {
                 width: 250px;
                 overflow: hidden;
