@@ -74,14 +74,14 @@
       if(this.video.id.$t) {
           console.log("old school youtube feed detected");
           var n = this.video.id.$t.lastIndexOf('/');
-          vid = this.video.id.$t.substring(n + 1);
+          this.vid = this.video.id.$t.substring(n + 1);
         }
         else if(this.video.id.videoId) {
           console.log("object as id detected");
-          vid = this.video.id.videoId;
+          this.vid = this.video.id.videoId;
         }
         else {
-          vid = this.video.id;
+          this.vid = this.video.id;
         } 
         
       },
