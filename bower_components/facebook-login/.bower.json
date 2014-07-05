@@ -22,8 +22,8 @@
     "branch": "master",
     "commit": "968b258fb1a725bb078f3aef61d96823346f77b7"
   },
-  "_source": "https://github.com/davidwittenbrink/facebook-login.git",
-  "_target": "*",
-  "_originalSource": "https://github.com/davidwittenbrink/facebook-login.git",
+  "_source": "git://github.com/davidwittenbrink/facebook-login.git",
+  "_target": "master",
+  "_originalSource": "davidwittenbrink/facebook-login",
   "_direct": true
 }
