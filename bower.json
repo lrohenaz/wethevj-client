@@ -24,8 +24,6 @@
     "paper-item": "Polymer/paper-item#~0.3.3",
     "polymer-ajax": "Polymer/polymer-ajax#~0.3.0",
     "socket-connection": "FWeinb/socket-connection#master",
-    "sortable-table": "~0.7.0",
-    "x-paginator": "~0.0.2",
     "cw-vote": "cletusw/cw-vote#master"
   },
   "resolutions": {
@@ -35,5 +33,5 @@
   "authors": [
     "lrohenaz <rohenaz@gmail.com>"
   ],
-  "description": "Social Video Jukebox"
+  "description": "Social Video Jukebox Remote"
 }
