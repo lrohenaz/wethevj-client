@@ -157,6 +157,9 @@
       	  this.page="SEARCH";
     	  }
     	},
+    	progressChanged: function(attr, newval, oldval) {
+    	  console.log("Progress: "+ this.progress "+"%")
+    	}
     	pageChanged: function(attr, newval, oldval) {
     	  console.log("Page changed from "+ oldval +" to "+ newval);
     	},
