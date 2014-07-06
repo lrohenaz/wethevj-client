@@ -58,7 +58,7 @@
           <template repeat="{{video in playlist_videos.items}}">
           <div horizontal center justified layout>
             <wethevj-video-item vid="{{vid}}" video="{{video}}" votes="{{votes}}" queue="{{queue}}"></wethevj-video-item>
-            <cw-vote vid="{{vid}}" value="{{votes}}"></cw-vote>
+            <cw-vote vid="{{vid}}" value="{{$.wethevj-client.votes}}"></cw-vote>
           </div>
           </template>
         </section>
