@@ -57,8 +57,8 @@
           
           <template repeat="{{video in playlist_videos.items}}">
           <div horizontal center justified layout>
-            <wethevj-video-item vid="{{vid}}" video="{{video}}" vote_total="{{vote_total}}"></wethevj-video-item>
-            <cw-vote vid="{{vid}}" value="{{queue.votes}}"></cw-vote>
+            <wethevj-video-item vid="{{vid}}" video="{{video}}" votes="{{votes}}" queue="{{queue}}"></wethevj-video-item>
+            <cw-vote vid="{{vid}}" value="{{votes}}"></cw-vote>
           </div>
           </template>
         </section>
@@ -99,6 +99,7 @@
           <h1>SEARCH</h1>
           <polymer-ajax id="polymer_ajax" auto url="http://gdata.youtube.com/feeds/api/videos/" params='{"alt":"json", "q":"{{$.paper_input.inputValue}}"}' handleas="json" on-polymer-response="{{ searchResponse }}">
           </polymer-ajax>
+          
           <template id="template" repeat="{{video in search_videos.feed.entry}}">
             <wethevj-video-item video="{{video}}"></wethevj-video-item>
           </template>
@@ -114,7 +115,6 @@
           /* bind search bar to query attribute of my element */
           this.page="PLAYLIST";
           this.channel="unity88";
-          var queue;
       },
       menuClick: function() {
           this.$.core_scaffold.closeDrawer;
@@ -129,7 +129,7 @@
     	},
       playlistResponse: function (e,rs) {
           this.playlist_vids=e.detail.response.csv_list;
-          queue = e.detail.response.queue;
+          this.queue = e.detail.response.queue;
           console.log(rs);
     	},
     	playlistYtResponse: function(e,rs) {
