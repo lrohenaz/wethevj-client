@@ -4,7 +4,6 @@
 <link rel="import" href="../core-icon-button/core-icon-button.html">
 <link rel="import" href="../paper-dialog/paper-dialog.html">
 <link rel="import" href="../paper-button/paper-button.html">
-<link rel="import" href="../polymer-animation/polymer-animation.html">
 <!--
 ##### Example
 
@@ -20,8 +19,8 @@
           <template id="template">
             <style type="text/css">
             [resolved] {
-              opacity: 1;
-              transition: opacity 300ms;
+              /* opacity: 1; */
+              /* transition: opacity 300ms; */
             }
             [unresolved] {
               opacity: 0;
@@ -100,12 +99,7 @@
           }
         }
         
-          var player = document.timeline.play(new Animation(this, [
-            {opacity: "0.5", transform: "scale(0.5)"}, 
-            {opacity: "1.0", transform: "scale(1.)"}
-          ],
-          {direction: "normal", fill: "forward", duration: 500, iterations: 1.0
-          }));
+
       },
       toggleVidDialog: function() {
         console.log("Toggle the vid");

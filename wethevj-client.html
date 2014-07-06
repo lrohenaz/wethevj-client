@@ -19,6 +19,8 @@
 <link rel="import" href="../facebook-login/facebook-login.html" />
 <link rel="import" href="../cw-vote/cw-vote.html" />
 
+<link rel="import" href="../polymer-animation/polymer-animation.html">
+<link rel="import" href="../polymer-animation/polymer-animation-group.html">
 <polymer-element name="wethevj-client" attributes="progress query page channel">
   <template>
     <style type="text/css">
@@ -57,10 +59,29 @@
           
           <template repeat="{{video in playlist_videos.items}}">
           <div horizontal center justified layout>
-            <wethevj-video-item vid="{{vid}}" video="{{video}}" votes="{{votes}}" queue="{{queue}}" unresolved></wethevj-video-item>
+
+              
+              <wethevj-video-item vid="{{vid}}" id="{{vid}}" video="{{video}}" votes="{{votes}}" queue="{{queue}}" unresolved>
+                
+              </wethevj-video-item>
+            
             <cw-vote vid="{{vid}}" value="{{votes}}"></cw-vote>
           </div>
           </template>
+          
+            <polymer-animation-group type="seq"> 
+              <template repeat="{{video in playlist_video_items}}">
+                <polymer-animation id="{{vid}}" easing="ease-in-out" duration="auto">
+                  <core-animation-keyframe>
+                    <core-animation-prop name="opacity" value="0"></core-animation-prop>
+                  </core-animation-keyframe>
+                  <core-animation-keyframe>
+                    <core-animation-prop name="opacity" value="1"></core-animation-prop>
+                  </core-animation-keyframe>
+                </polymer-animation>
+              </template>
+            </polymer-animation-group>
+            
         </section>
         <section id="explore_page">
           <!-- EXPLORE -->
@@ -164,7 +185,10 @@
     	  }
     	},
     	pageChanged: function(attr, newval, oldval) {
+    	  querySelector('wethevj-video-item');
     	  console.log("Page changed from "+ oldval +" to "+ newval);
+
+            document.timeline.play();
     	},
     	connectedChanged: function() {
     	  console.log('connected');
