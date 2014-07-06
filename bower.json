@@ -24,8 +24,7 @@
     "paper-dialog": "Polymer/paper-dialog#~0.3.3",
     "paper-item": "Polymer/paper-item#~0.3.3",
     "socket-connection": "FWeinb/socket-connection#master",
-    "cw-vote": "cletusw/cw-vote#master",
-    "paper-progress": "Polymer/paper-progress#master"
+    "cw-vote": "cletusw/cw-vote#master"
   },
   "resolutions": {
     "polymer": "~0.3.3",

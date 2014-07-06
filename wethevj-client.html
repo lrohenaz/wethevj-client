@@ -20,7 +20,7 @@
 
 <link rel="import" href="../cw-vote/cw-vote.html" />
 
-<polymer-element name="wethevj-client" attributes="query page channel">
+<polymer-element name="wethevj-client" attributes="progress query page channel">
   <template>
     <style type="text/css">
     :host {
@@ -115,6 +115,7 @@
           /* bind search bar to query attribute of my element */
           this.page="PLAYLIST";
           this.channel="unity88";
+          this.progress = 10;
       },
       menuClick: function() {
           this.$.core_scaffold.closeDrawer;
@@ -125,23 +126,28 @@
     	},
       exploreResponse: function (e,rs) {
           this.explore_videos=rs.response;
+          progress += 10;
           console.log(rs.response);
     	},
       playlistResponse: function (e,rs) {
           this.playlist_vids=e.detail.response.csv_list;
           this.queue = e.detail.response.queue;
+          this.progress += 20;
           console.log(rs);
     	},
     	playlistYtResponse: function(e,rs) {
     	    this.playlist_videos=rs.response;
+    	    progress += 20;
           console.log(rs);
     	},
       historyResponse: function (e,rs) {
           this.history_vids=e.detail.response;
+          progress += 20;
           console.log(rs);
     	},
     	historyYtResponse: function(e,rs) {
     	    this.history_videos=rs.response;
+    	    history += 20;
           console.log(rs);
     	},
     	queryChanged: function(attr,newval,oldval) {
