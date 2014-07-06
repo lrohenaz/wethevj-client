@@ -84,22 +84,20 @@
           console.log("old school youtube feed detected");
           var n = this.video.id.$t.lastIndexOf('/');
           this.vid = this.video.id.$t.substring(n + 1);
-          console.log("Id alone is "+ this.vid);
         }
         if(this.video.id.videoId) {
-          console.log("object as id detected");
+          /* in some feeds, the id is an object containing videoId which has the actual id */
           this.vid = this.video.id.videoId;
         }
         /* loop through queue and set the vote total for this item */
         for(queue_item in this.queue) {
-          console.log(this.queue);
+          console.log(queue_item);
           if(this.vid == queue_item.id) {
-            console.log("This video has "+ queue_item.votes);
+            console.log("In the kitchen");
             this.votes = queue_item.votes;
           }
           
         }
-        this.vote_total = this.queue;
         
       },
       toggleVidDialog: function() {
