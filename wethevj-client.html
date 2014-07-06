@@ -153,13 +153,13 @@
     	queryChanged: function(attr,newval,oldval) {
     	  /* not sure why but oldval is all that works, newval has a big object in it */
     	  if(newval!="") {
-    	  console.log(newval);
+    	    console.log(newval);
       	  this.page="SEARCH";
     	  }
     	},
     	progressChanged: function(attr, newval, oldval) {
     	  console.log("Progress: "+ this.progress +"%");
-    	}
+    	},
     	pageChanged: function(attr, newval, oldval) {
     	  console.log("Page changed from "+ oldval +" to "+ newval);
     	},
