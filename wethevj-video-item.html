@@ -91,7 +91,7 @@
           this.vid = this.video.id.videoId;
         }
         /* loop through queue and set the vote total for this item */
-        for(queue_item in queue) {
+        for(queue_item in this.queue) {
           if(this.vid == queue_item.id) {
             this.votes = queue_item.votes;
           }
