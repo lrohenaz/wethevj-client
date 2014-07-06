@@ -126,7 +126,7 @@
     	},
       exploreResponse: function (e,rs) {
           this.explore_videos=rs.response;
-          progress += 10;
+          this.progress += 10;
           console.log(rs.response);
     	},
       playlistResponse: function (e,rs) {
@@ -137,17 +137,17 @@
     	},
     	playlistYtResponse: function(e,rs) {
     	    this.playlist_videos=rs.response;
-    	    progress += 20;
+    	    this.progress += 20;
           console.log(rs);
     	},
       historyResponse: function (e,rs) {
           this.history_vids=e.detail.response;
-          progress += 20;
+          this.progress += 20;
           console.log(rs);
     	},
     	historyYtResponse: function(e,rs) {
     	    this.history_videos=rs.response;
-    	    history += 20;
+    	    this.progress += 20;
           console.log(rs);
     	},
     	queryChanged: function(attr,newval,oldval) {
