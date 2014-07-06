@@ -79,6 +79,7 @@
     Polymer('wethevj-video-item', {
       ready: function() {
         this.vid = this.video.id;
+        this.votes=0;
         
         if(this.video.id.$t) {
           console.log("old school youtube feed detected");
@@ -95,7 +96,6 @@
             this.votes = this.queue[queue_item].votes;
             console.log("Votes:"+ this.votes)
           }
-          
         }
         
       },
