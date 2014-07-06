@@ -91,9 +91,9 @@
         }
         /* loop through queue and set the vote total for this item */
         for(queue_item in this.queue) {
-          console.log(queue_item.vid);
           if(this.vid == this.queue[queue_item].vid) {
             this.votes = this.queue[queue_item].votes;
+            console.log("Votes:" this.votes)
           }
           
         }
