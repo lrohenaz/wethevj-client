@@ -16,15 +16,16 @@
 @homepage https://.../wethevj-video-item
 -->
 
-<polymer-element name="wethevj-video-item" attributes="video queue vid votes" unresolved>
+<polymer-element name="wethevj-video-item" attributes="video queue vid votes">
           <template id="template">
             <style type="text/css">
-            wethevj-video-item {
+            [resolved] {
               opacity: 1;
               transition: opacity 300ms;
             }
-            wethevj-video-item:unresolved {
+            [unresolved] {
               opacity: 0;
+            /* other custom styles for unresolved elements */
             }
             .crop {
                 width: 250px;
@@ -41,7 +42,7 @@
               padding: 30px;
             } 
             </style>
-          <polymer-ui-card vertical layout>
+          <polymer-ui-card vertical layout unresolved>
             <div horizontal layout>
               <div>
                 <div class="crop"><img class="ty_img" width="250" src="{{video.media$group.media$thumbnail[0].url||video.snippet.thumbnails.medium.url}}" /></div>

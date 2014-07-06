@@ -17,7 +17,6 @@
 <link rel="import" href="../font-roboto/roboto.html" />
 <link rel="import" href="../wethevj-client/wethevj-video-item.html" />
 <link rel="import" href="../facebook-login/facebook-login.html" />
-
 <link rel="import" href="../cw-vote/cw-vote.html" />
 
 <polymer-element name="wethevj-client" attributes="progress query page channel">
@@ -28,6 +27,7 @@
     }
     </style>
     <link rel="stylesheet" type="style/css" href="style.css" />
+    
     <core-scaffold id="core_scaffold">
       <core-header-panel mode="seamed" id="core_header_panel" navigation flex>
         <core-toolbar id="core_toolbar">
@@ -57,7 +57,7 @@
           
           <template repeat="{{video in playlist_videos.items}}">
           <div horizontal center justified layout>
-            <wethevj-video-item vid="{{vid}}" video="{{video}}" votes="{{votes}}" queue="{{queue}}"></wethevj-video-item>
+            <wethevj-video-item vid="{{vid}}" video="{{video}}" votes="{{votes}}" queue="{{queue}}" unresolved></wethevj-video-item>
             <cw-vote vid="{{vid}}" value="{{votes}}"></cw-vote>
           </div>
           </template>
@@ -79,7 +79,7 @@
           <polymer-ajax id="history_yt_ajax" auto url="https://www.googleapis.com/youtube/v3/videos" params='{"id":"{{history_vids}}", "key":"AIzaSyCP-KyJTdtbCJOSE6CHfSH-PvJeJlFVjUc", "part":"snippet"}' handleas="json" on-polymer-response="{{ historyYtResponse }}">
           </polymer-ajax>
           <template repeat="{{video in history_videos.items}}">
-            <wethevj-video-item video="{{video}}"></wethevj-video-item>
+            <wethevj-video-item video="{{video}}" unresolved></wethevj-video-item>
           </template>
         </section>
         <section id="favorites_page">
@@ -159,6 +159,9 @@
     	},
     	progressChanged: function(attr, newval, oldval) {
     	  console.log("Progress: "+ this.progress +"%");
+    	  if(this.progress>=100) {
+    	      this.setAttribute('resolved', '');
+    	  }
     	},
     	pageChanged: function(attr, newval, oldval) {
     	  console.log("Page changed from "+ oldval +" to "+ newval);

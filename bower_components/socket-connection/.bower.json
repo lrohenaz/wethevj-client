@@ -29,6 +29,5 @@
   },
   "_source": "git://github.com/FWeinb/socket-connection.git",
   "_target": "master",
-  "_originalSource": "FWeinb/socket-connection",
-  "_direct": true
+  "_originalSource": "FWeinb/socket-connection"
 }
