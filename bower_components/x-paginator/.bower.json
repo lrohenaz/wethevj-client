@@ -33,6 +33,5 @@
   },
   "_source": "git://github.com/addyosmani/x-paginator.git",
   "_target": "~0.0.2",
-  "_originalSource": "x-paginator",
-  "_direct": true
+  "_originalSource": "x-paginator"
 }
