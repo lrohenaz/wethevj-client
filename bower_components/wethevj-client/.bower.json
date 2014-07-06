@@ -25,7 +25,8 @@
     "paper-button": "Polymer/paper-button#~0.3.3",
     "polymer-ajax": "Polymer/polymer-ajax#~0.3.0",
     "wethevj-client": "https://github.com/lrohenaz/wethevj-client.git",
-    "facebook-login": "davidwittenbrink/facebook-login#master"
+    "facebook-login": "davidwittenbrink/facebook-login#master",
+    "cw-vote": "cletusw/cw-vote#master"
   },
   "resolutions": {
     "polymer": "~0.3.3",
@@ -35,11 +36,11 @@
     "lrohenaz <rohenaz@gmail.com>"
   ],
   "homepage": "https://github.com/lrohenaz/wethevj-client",
-  "_release": "2178e32ea0",
+  "_release": "b1c867f662",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "2178e32ea0d134d83f88a439f6103514048b2bff"
+    "commit": "b1c867f662c48fbeee6ccf3f2271ff85ec7f0fe9"
   },
   "_source": "https://github.com/lrohenaz/wethevj-client.git",
   "_target": "*",
