@@ -102,9 +102,10 @@
         
           var player = document.timeline.play(new Animation(this, [
             {opacity: "0.5", transform: "scale(0.5)"}, 
-            {opacity: "1.0", transform: "scale(1)"}
+            {opacity: "1.0", transform: "scale(1.1)"},
+            {transform: "scale(1.0)"
           ],
-          {direction: "alternate", duration: 500, iterations: Infinity
+          {direction: "normal", duration: 500, iterations: 1.0
           }));
       },
       toggleVidDialog: function() {
