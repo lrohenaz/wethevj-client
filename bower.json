@@ -24,16 +24,18 @@
     "paper-dialog": "Polymer/paper-dialog#~0.3.3",
     "paper-item": "Polymer/paper-item#~0.3.3",
     "socket-connection": "FWeinb/socket-connection#master",
-    "cw-vote": "cletusw/cw-vote#master"
+    "cw-vote": "cletusw/cw-vote#master",
+    "polymer": "Polymer/polymer#~0.3.3",
+    "core-animation": "Polymer/core-animation#~0.3.3"
   },
   "resolutions": {
-    "polymer": "~0.3.3",
-    "platform": ">=0.3.0 <1.0.0",
+    "polymer": "master",
+    "platform": "master",
     "core-component-page": "master"
   },
   "authors": [
     "lrohenaz <rohenaz@gmail.com>"
   ],
   "description": "Social Video Jukebox Remote",
-  "homepage": "wethevj.com/wethevj/client.php"
+  "homepage": "http://wethevj.com/wethevj/client.php"
 }
