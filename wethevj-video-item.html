@@ -50,6 +50,14 @@
         -webkit-transform: scale(5); 
         transform: scale(5); /* 48px */
         fill: rgb(255,0,0);
+        height:100px;
+    }
+    #account_icon::shadow core-icon svg{ 
+        height:'';
+        width:'';
+    }
+    #account_icon::shadow clip {
+      min-height:100px;
     }
     </style>
     
@@ -57,9 +65,9 @@
     <polymer-ui-card vertical layout unresolved>
       <div horizontal center-justified layout>
           <div class="crop" flex five><img class="ty_img" width="350" src="{{video.media$group.media$thumbnail[0].url||video.snippet.thumbnails.medium.url}}" /></div>
-    	    <div horizontal top-justified layout flex three style="padding:10px;">
-    	      <h3 style="width:100%;">Played by</h3><br />
-    	      <paper-button id="account_icon" icon="account-circle" style="min-height:70px;" on-click="{{showAccountInfo}}" flex></paper-button>
+    	    <div vertical top-justified layout flex three style="padding:10px;">
+    	      <h3 style="width:100%;">Played by</h3>
+    	      <paper-button id="account_icon" icon="account-circle" on-click="{{showAccountInfo}}" flex></paper-button>
     	    </div>
     	    <cw-vote id="voting" vid="{{vid}}" value="{{votes}}" flex one></cw-vote>
     	</div>
@@ -172,6 +180,7 @@
         /* Ajax call to add video to the queue */
         console.log("send to http://wethevj.com/wethevj/rpc.php?action=addToQueue&vid="+this.vid+"&service=youtube");
         this.shadowRoot.querySelector('#addToQueue').setAtttribute('icon','av:play-arrow-outline');
+        this.shadowRoot.querySelector('#addToQueue').setAtttribute('disabled','');
         this.shadowRoot.querySelector('#queued_toast').show();
       },
       attached: function() {
@@ -184,4 +193,4 @@
     });
   </script>
 
-</polymer-element>
+</polymer-element>  
