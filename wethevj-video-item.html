@@ -71,14 +71,14 @@
                 <param name="movie" value="http://www.youtube.com/v/{{vid}}" />
                 <embed height="350" src="http://www.youtube.com/v/{{vid}}?showinfo=no&autoplay=1&&iv_load_policy=3&fs=0&rel=0&showsearch=0&hd=1" type="application/x-shockwave-flash" width="425"></embed>
               </object>
-              <paper-button label="Close" dismissive></paper-button>
+              <paper-button label="Add to Playlist" icon="av:play-arrow" affirmative></paper-button><paper-button icon="close" label="Close" dismissive></paper-button>
             </paper-dialog>
             
             <!-- /* Queue Confirm Preview */ -->
             <paper-dialog heading="Add to Playlist" id="queueConfirm_{{vid}}" transition="paper-dialog-transition-center">
               <h1>Are you Sure?</h1>
                 <paper-button label="Cancel" dismissive></paper-button>
-              <paper-button label="Att to Playlist" affirmative default on-click="{{sendToQueue}}"></paper-button>
+              <paper-button icon="av:play-arrow" label="Att to Playlist" affirmative default on-click="{{sendToQueue}}"></paper-button>
             </paper-dialog>
           </polymer-ui-card>
           
