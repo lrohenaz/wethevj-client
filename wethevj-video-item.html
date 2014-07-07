@@ -32,7 +32,7 @@
     /* other custom styles for unresolved elements */
     }
     .crop {
-        width: 250px;
+        width: 200px;
         overflow: hidden;
       	margin-right:0px;
     }
@@ -58,7 +58,7 @@
     
     <polymer-ui-card vertical layout unresolved>
       <div horizontal center-justified layout>
-          <div class="crop" flex five><img class="ty_img" width="350" src="{{video.media$group.media$thumbnail[0].url||video.snippet.thumbnails.medium.url}}" /></div>
+          <div class="crop" flex five><img class="ty_img" width="300" src="{{video.media$group.media$thumbnail[0].url||video.snippet.thumbnails.medium.url}}" /></div>
     	    <div vertical top-justified layout flex three style="padding:10px;">
     	      <h3 style="width:100%;margin-top:-15px;">Played by</h3>
     	      <img src="{{userIcon}}" id="account_icon" on-click="{{showAccountInfo}}" flex></paper-button>
