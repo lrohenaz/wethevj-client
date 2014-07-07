@@ -81,7 +81,7 @@
         </section>
         <section id="history_page">
           <h1>HISTORY</h1>
-          <polymer-ajax id="history_ajax" auto url="http://wethevj.com/wethevj/rpc.php" params='{"action":"get_history", "type" : "csv", "filter" : "youtube", "channel":"{{channel}}"}' handleas="json" on-polymer-response="{{ historyResponse }}">
+          <polymer-ajax id="history_ajax" url="http://wethevj.com/wethevj/rpc.php" params='{"action":"get_history", "type" : "csv", "filter" : "youtube", "channel":"{{channel}}"}' handleas="json" on-polymer-response="{{ historyResponse }}">
           </polymer-ajax>
           <polymer-ajax id="history_yt_ajax" auto url="https://www.googleapis.com/youtube/v3/videos" params='{"id":"{{history_vids}}", "key":"AIzaSyCP-KyJTdtbCJOSE6CHfSH-PvJeJlFVjUc", "part":"snippet"}' handleas="json" on-polymer-response="{{ historyYtResponse }}">
           </polymer-ajax>
@@ -105,7 +105,7 @@
         </section>
         <section id="search_page">
           <h1>SEARCH</h1>
-          <polymer-ajax id="polymer_ajax" auto url="http://gdata.youtube.com/feeds/api/videos/" params='{"alt":"json", "q":"{{$.paper_input.inputValue}}"}' handleas="json" on-polymer-response="{{ searchResponse }}">
+          <polymer-ajax id="polymer_ajax" url="http://gdata.youtube.com/feeds/api/videos/" params='{"alt":"json", "q":"{{$.paper_input.inputValue}}"}' handleas="json" on-polymer-response="{{ searchResponse }}">
           </polymer-ajax>
           
           <template id="template" repeat="{{video in search_videos.feed.entry}}">
@@ -193,7 +193,9 @@
     	},
     	pageChanged: function(attr, newval, oldval) {
     	  console.log("Page changed from "+ oldval +" to "+ newval);
-    
+        if(this.page=="HISTORY") {
+          querySelector('#history_ajax').go();
+        }
 
     
     	},

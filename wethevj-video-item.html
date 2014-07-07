@@ -61,27 +61,28 @@
                 <paper-button icon="theaters" on-click="{{togglePreviewDialog}}"></paper-button>
                 <core-icon-button icon="favorite-outline"></core-icon-button>
                 <paper-button icon="av:play-arrow" on-click="{{sendToQueueConfirm}}"></paper-button>
-                  <paper-dialog heading="Preview" id="preview_{{vid}}" transition="paper-dialog-transition-center">
-
-                    <object height="350" width="425">
-                      <param name="movie" value="http://www.youtube.com/v/{{vid}}" />
-                      <embed height="350" src="http://www.youtube.com/v/{{vid}}?showinfo=no&autoplay=1&&iv_load_policy=3&fs=0&rel=0&showsearch=0&hd=1" type="application/x-shockwave-flash" width="425"></embed>
-                    </object>
-  
-                    <paper-button label="Close" dismissive></paper-button>
-                
-                  </paper-dialog>
-                  <paper-dialog heading="Add to Playlist" id="queueConfirm_{{vid}}" transition="paper-dialog-transition-center">
-
-                    <h1>Are you Sure?</h1>
-                      <paper-button label="Cancel" dismissive></paper-button>
-                    <paper-button label="Att to Playlist" affirmative default on-click="{{sendToQueue}}"></paper-button>
-                
-                  </paper-dialog>
               </div>
             </div>
           </polymer-ui-card>
+          
           <paper-toast id="queued_toast" text="Video added to Playlist"></paper-toast>
+          
+          <!-- /* Video Preview */ -->
+          <paper-dialog heading="Preview" id="preview_{{vid}}" transition="paper-dialog-transition-center">
+            <object height="350" width="425">
+              <param name="movie" value="http://www.youtube.com/v/{{vid}}" />
+              <embed height="350" src="http://www.youtube.com/v/{{vid}}?showinfo=no&autoplay=1&&iv_load_policy=3&fs=0&rel=0&showsearch=0&hd=1" type="application/x-shockwave-flash" width="425"></embed>
+            </object>
+            <paper-button label="Close" dismissive></paper-button>
+          </paper-dialog>
+          
+          <!-- /* Queue Confirm Preview */ -->
+          <paper-dialog heading="Add to Playlist" id="queueConfirm_{{vid}}" transition="paper-dialog-transition-center">
+            <h1>Are you Sure?</h1>
+              <paper-button label="Cancel" dismissive></paper-button>
+            <paper-button label="Att to Playlist" affirmative default on-click="{{sendToQueue}}"></paper-button>
+          </paper-dialog>
+          
         </template>
   <script>
     Polymer('wethevj-video-item', {
@@ -120,6 +121,9 @@
         /* Ajax call to add video to the queue */
         console.log("send to http://wethevj.com/wethevj/rpc.php?action=addToQueue&vid="+this.vid+"&service=youtube");
         this.shadowRoot.querySelector('#queued_toast').show();
+      },
+      attached: function() {
+        console.log("video item attached to dom");
       }
     });
   </script>
