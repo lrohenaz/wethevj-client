@@ -172,7 +172,7 @@
       sendToQueue: function() {
         /* Ajax call to add video to the queue */
         console.log("send to http://wethevj.com/wethevj/rpc.php?action=addToQueue&vid="+this.vid+"&service=youtube");
-        this.shadowRoot.querySelector('#addToQueueBtn').setAtttribute('icon','av:play-arrow-outline');
+        this.shadowRoot.querySelector('#addToQueue').setAtttribute('icon','av:play-arrow-outline');
         this.shadowRoot.querySelector('#queued_toast').show();
       },
       attached: function() {
