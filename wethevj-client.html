@@ -150,7 +150,7 @@
         var i=0;
         var animations = "";
         for(video in this.playlist_videos.items) {
-          var targetElement = this.$.vid;
+          var targetElement = this.querySelector(video.id);
           console.log("target: "+ targetElement);
           var animation = new Animation(targetElement,
             [{opacity: '0'}, {opacity: '1.0'}], 2000);
@@ -204,5 +204,4 @@
     });
   
   </script>
-
-</polymer-elem    
+</polymer-element>
