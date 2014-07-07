@@ -161,7 +161,7 @@
           i++;
         }
         var animationGroup =  new AnimationGroup(new AnimationSequence(animations,{duration: 6000, delay: 3000, fill: 'none'}), {type: 'seq', iterations: 2, fill: 'forwards'});
-        animationGroup.play();
+        var player = document.timeline.play(animationGroup);
         
         console.log(rs);
     	},
