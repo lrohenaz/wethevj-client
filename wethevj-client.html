@@ -189,7 +189,7 @@
     	pageChanged: function(attr, newval, oldval) {
     	  console.log("Page changed from "+ oldval +" to "+ newval);
     
-        var animation = document.getElementById('animGroup');
+        var animation = this.$.animGroup;
         animation.play();
     
     	},
