@@ -46,17 +46,17 @@
               margin:10px;
             }
             #account_icon::shadow core-icon{ 
-                -moz-transform: scale(2); 
-                -webkit-transform: scale(2); 
-                transform: scale(2); /* 48px */
+                -moz-transform: scale(5); 
+                -webkit-transform: scale(5); 
+                transform: scale(5); /* 48px */
             
                 fill: rgb(255,255,255);
             }
             </style>
           <polymer-ui-card vertical layout unresolved>
             <div horizontal center-justified layout>
-                <div class="crop" flex two><img class="ty_img" width="350" src="{{video.media$group.media$thumbnail[0].url||video.snippet.thumbnails.medium.url}}" /></div>
-          	    <div flex one>Played by<br /><paper-button id="account_icon" icon="account-circle" on-click"{{showAccountInfo}}"></paper-button></div>
+                <div class="crop" flex three><img class="ty_img" width="350" src="{{video.media$group.media$thumbnail[0].url||video.snippet.thumbnails.medium.url}}" /></div>
+          	    <div flex two><h3>Played by</h3><paper-button id="account_icon" icon="account-circle" style="width:100%; height:100%;" on-click"{{showAccountInfo}}"></paper-button></div>
           	    <cw-vote vid="{{vid}}" value="{{votes}}" flex one></cw-vote>
           	</div>
           	<div horizontal layout>
@@ -68,7 +68,7 @@
             </div>
           <div horizontal layout start>
             <div style="height:100%:" vertical layout>
-            RATING
+            <div horizontal layout><core-icon icon="star"></core-icon><core-icon icon="star"></core-icon><core-icon icon="star"></core-icon><core-icon icon="star"></core-icon><core-icon icon="star-outline"></core-icon></div>
             </div>
             <div horizontal end-justified layout flex>
               <div horizontal center-justified layout>
@@ -109,11 +109,11 @@
       ready: function() {
         this.vid = this.video.id;
         this.votes=0;
-        if(this.showVoting==true) {
-          
+        if(this.show_Voting==true) {
+          console.log("Show voting enabled");
         }
-        if(this.showaddToQueue==true) {
-          
+        if(this.show_addToQueue==true) {
+          console.log("Add To Queue Button Enabled");
         }
         if(this.video.id.$t) {
           console.log("old school youtube feed detected");
@@ -135,7 +135,7 @@
       showAccountInfo: function() {
         console.log("Show account info");
         var acctDialog = this.shadowRoot.querySelector('#acctInfo_'+this.vid);
-        acctDialog.toggle(); 
+        acctDialog.toggle();
       },
       togglePreviewDialog: function() {
         console.log("Toggle the vid");
