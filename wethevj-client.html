@@ -160,7 +160,7 @@
           animations += animation;
           i++;
         }
-        var animationGroup =  new AnimationGroup([new AnimationSequence([animations],{duration: 6000, delay: 3000, fill: 'none'})], {type: 'seq', iterations: 2, fill: 'forwards'});
+        var animationGroup =  new AnimationGroup(new AnimationSequence(animations,{duration: 6000, delay: 3000, fill: 'none'}), {type: 'seq', iterations: 2, fill: 'forwards'});
         animationGroup.play();
         
         console.log(rs);
