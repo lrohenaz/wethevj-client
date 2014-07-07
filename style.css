@@ -1,10 +1,14 @@
-#paperProgress {
+#paperProgress::shadow. {
   width:100%;
+}
+wethevj-client::shadow paper-progress::shadow #activeProgress {
+  background-color:lime;
+  border-bottom:1px solid #000;
 }
 shadow::#activeProgress {
   /* default background-color: #0f9d58; */
   background-color:lime;
-  border-bottom:1px solit #000;
+  border-bottom:1px solid #000;
 }
 #core_header_panel {
   background-color: rgb(255, 255, 255);
