@@ -4,13 +4,14 @@
 <link rel="import" href="../core-icon-button/core-icon-button.html">
 <link rel="import" href="../paper-dialog/paper-dialog.html">
 <link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../paper-toast/paper-toast.html">
 <!--
 ##### Example
 
     <wethevj-video-item></wethevj-video-item>
 
 @element wethevj-video-item
-@blurb Element providing solution to [...].
+@blurb Element providing solution to card populated with video data.
 @status [...]
 @homepage https://.../wethevj-video-item
 -->
@@ -58,23 +59,31 @@
             </div>
             <div horizontal end-justified layout flex>
               <div horizontal center-justified layout>
-                <paper-button icon="theaters" on-click="{{toggleVidDialog}}"></paper-button><core-icon-button icon="favorite-outline"></core-icon-button><core-icon-button icon="av:play-arrow"></core-icon-button>
-                  <paper-dialog heading="Dialog" id="preview_{{vid}}" transition="paper-dialog-transition-center">
+                <paper-button icon="theaters" on-click="{{toggleVidDialog}}"></paper-button><core-icon-button icon="favorite-outline"></core-icon-button><core-icon-button icon="av:play-arrow" on-click="{{sendToQueue"></core-icon-button>
+                  <paper-dialog heading="Preview" id="preview_{{vid}}" transition="paper-dialog-transition-center">
 
                     <object height="350" width="425">
                       <param name="movie" value="http://www.youtube.com/v/{{vid}}" />
                       <embed height="350" src="http://www.youtube.com/v/{{vid}}?showinfo=no&autoplay=1&&iv_load_policy=3&fs=0&rel=0&showsearch=0&hd=1" type="application/x-shockwave-flash" width="425"></embed>
                     </object>
   
-                    <paper-button label="More Info..." dismissive></paper-button>
-                    <paper-button label="Decline" affirmative></paper-button>
-                    <paper-button label="Accept" affirmative default></paper-button>
+                    <paper-button label="Close" dismissive></paper-button>
                 
                   </paper-dialog>
+                  <paper-dialog heading="Add to Playlist" id="queueConfirm_{{vid}}" transition="paper-dialog-transition-center">
 
+                    <object height="350" width="425">
+                      <param name="movie" value="http://www.youtube.com/v/{{vid}}" />
+                      <embed height="350" src="http://www.youtube.com/v/{{vid}}?showinfo=no&autoplay=1&&iv_load_policy=3&fs=0&rel=0&showsearch=0&hd=1" type="application/x-shockwave-flash" width="425"></embed>
+                    </object>
+                      <paper-button label="Cancel" dismissive></paper-button>
+                    <paper-button label="Att to Playlist" affirmative default on-click="document.querySelector('#queued_toast').show();"></paper-button>
+                
+                  </paper-dialog>
               </div>
             </div>
           </polymer-ui-card>
+          <psper-toast id="queued_toast" text="Video added to Playlist"></paper-toast>
         </template>
   <script>
     Polymer('wethevj-video-item', {
@@ -103,8 +112,17 @@
       },
       toggleVidDialog: function() {
         console.log("Toggle the vid");
-        var videoDialog = this.shadowRoot.querySelector('#preview_'+this.vid);
-        videoDialog.toggle();      
+        var previewDialog = this.shadowRoot.querySelector('#preview__'+this.vid);
+        previewDialog.toggle();      
+      },
+      sendToQueue: function() {
+        console.log("Sending to queue");
+      var queueConfirmDialog = this.shadowRoot.querySelector('#queueConfirm_'+this.vid);
+        queueConfirmDialog.toggle();
+        if(queueConfirmDialog.affirmative) {
+          console.log("test");
+        }
+        
       }
     });
   </script>
