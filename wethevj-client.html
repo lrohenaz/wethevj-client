@@ -52,8 +52,8 @@
       <div id="div" tool><div horizontal layout flex>{{ $.core_menu.selectedItem.label }}</div></div>
       <core-pages selected="{{ $.core_menu.selectedItem.id }}" selectedindex="0" notap id="core_pages">
         <section id="playlist_page" active>
-          <h1>PLAYLIST</h1>
-          <paper-progress value="{{progress}}"></paper-progress>
+          <!-- PLAYLIST -->
+          <paper-progress value="{{progress}}" id="paperProgress"></paper-progress>
           <polymer-ajax id="playlist_ajax" auto url="http://wethevj.com/wethevj/rpc.php" params='{"action":"get_queue", "type" : "json", "channel":"{{channel}}"}' handleas="json" on-polymer-response="{{ playlistResponse }}">
           </polymer-ajax>
             <polymer-ajax id="playlist_yt_ajax" auto url="https://www.googleapis.com/youtube/v3/videos" params='{"id":"{{playlist_vids}}", "key":"AIzaSyCP-KyJTdtbCJOSE6CHfSH-PvJeJlFVjUc", "part":"snippet"}' handleas="json" on-polymer-response="{{ playlistYtResponse }}">
