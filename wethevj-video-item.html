@@ -42,10 +42,12 @@
             } 
             </style>
           <polymer-ui-card vertical layout unresolved>
-            <div horizontal layout>
+            <div horizontal center-justified layout>
               <div>
                 <div class="crop"><img class="ty_img" width="250" src="{{video.media$group.media$thumbnail[0].url||video.snippet.thumbnails.medium.url}}" /></div>
           	  </div>
+          	</div>
+          	<div horizontal layout>
           	  <div  style="padding-right:10px;" flex>
                 <h3>{{video.title.$t||video.snippet.title}}</h3>
           	    <span>{{video.published.$t||video.snippet.publishedAt}}</span><br />
