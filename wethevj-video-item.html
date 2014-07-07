@@ -55,9 +55,9 @@
             </style>
           <polymer-ui-card vertical layout unresolved>
             <div horizontal center-justified layout>
-                <div class="crop" flex three><img class="ty_img" width="350" src="{{video.media$group.media$thumbnail[0].url||video.snippet.thumbnails.medium.url}}" /></div>
-          	    <div flex two><h3>Played by</h3><paper-button id="account_icon" icon="account-circle" on-click="{{showAccountInfo}}" flex></paper-button></div>
-          	    <cw-vote vid="{{vid}}" value="{{votes}}" flex one></cw-vote>
+                <div class="crop" flex five><img class="ty_img" width="350" src="{{video.media$group.media$thumbnail[0].url||video.snippet.thumbnails.medium.url}}" /></div>
+          	    <div flex three><h3>Played by</h3><paper-button id="account_icon" icon="account-circle" on-click="{{showAccountInfo}}" flex></paper-button></div>
+          	    <cw-vote id="voting" vid="{{vid}}" value="{{votes}}" flex one></cw-vote>
           	</div>
           	<div horizontal layout>
           	  <div  style="padding-right:10px;" flex>
@@ -73,8 +73,8 @@
             <div horizontal end-justified layout flex>
               <div horizontal center-justified layout>
                 <paper-button icon="theaters" on-click="{{togglePreviewDialog}}"></paper-button>
-                <core-icon-button icon="favorite-outline"></core-icon-button>
-                <paper-button icon="av:play-arrow" on-click="{{sendToQueueConfirm}}"></paper-button>
+                <core-icon-button id="favorite" icon="favorite-outline" on-click="{{toggleFavorite}}"></core-icon-button>
+                <paper-button id="addToQueue" icon="av:play-arrow" on-click="{{sendToQueueConfirm}}" unresolved></paper-button>
               </div>
             </div>
            <!-- /* Video Preview */ -->
@@ -89,7 +89,7 @@
             <!-- /* Queue Confirm Preview */ -->
             <paper-dialog heading="Add to Playlist" id="queueConfirm_{{vid}}" transition="paper-dialog-transition-center">
               <h1>Are you Sure?</h1>
-                <paper-button label="Cancel" dismissive></paper-button>
+                <paper-button label="Cancel" icon="close" dismissive></paper-button>
               <paper-button icon="av:play-arrow" label="Att to Playlist" affirmative default on-click="{{sendToQueue}}"></paper-button>
             </paper-dialog>
 
@@ -103,17 +103,20 @@
           </polymer-ui-card>
           
           <paper-toast id="queued_toast" text="Video added to Playlist"></paper-toast>
+          <paper-toast id="favorited_toast" text="Video added to Favorites"></paper-toast>
         </template>
   <script>
     Polymer('wethevj-video-item', {
       ready: function() {
         this.vid = this.video.id;
         this.votes=0;
-        if(this.show_Voting==true) {
+        if(this.show_voting==true) {
           console.log("Show voting enabled");
+          this.shadowRoot.querySelector('#voting').setAttribute('resolved','');
         }
         if(this.show_addToQueue==true) {
           console.log("Add To Queue Button Enabled");
+          this.shadowRoot.querySelector('#addToQueue').setAttribute('resolved','');
         }
         if(this.video.id.$t) {
           console.log("old school youtube feed detected");
@@ -130,6 +133,17 @@
             this.votes = this.queue[queue_item].votes;
             console.log("Votes:"+ this.votes)
           }
+        }
+      },
+      toggleFavorite: function() {
+        console.log("Toggle Favorite");
+        var fav_icon = this.shadowRoot.querySelector('#favorite');
+        if(fav_icon.getAttribute('icon') == 'favorite') {
+          fav_icon.setAttribute('icon','favorite-outline');
+        }
+        else {
+          fav_icon.setAttribute('icon','favorite');
+          this.shadowRoot.querySelector('#favorited_toast').show();
         }
       },
       showAccountInfo: function() {
@@ -154,6 +168,7 @@
       },
       attached: function() {
         console.log("video item attached to dom");
+        this.setAttribute('resolved', '');
       },
       friendRequest: function() {
         console.log("Friend Request");
