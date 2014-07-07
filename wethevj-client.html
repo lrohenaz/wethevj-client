@@ -32,7 +32,7 @@
     }
     </style>
     <link rel="stylesheet" type="style/css" href="style.css" />
-    
+    <content>
     <core-scaffold id="core_scaffold">
       <core-header-panel mode="seamed" id="core_header_panel" navigation flex>
         <core-toolbar id="core_toolbar">
@@ -114,6 +114,7 @@
         </section>
       </core-pages>
     </core-scaffold>
+    </content>
   </template>
 
   <script>
@@ -194,7 +195,7 @@
     	pageChanged: function(attr, newval, oldval) {
     	  console.log("Page changed from "+ oldval +" to "+ newval);
         if(this.page=="HISTORY") {
-          querySelector('#history_ajax').go();
+          this.querySelector('#history_ajax').go();
         }
 
     
