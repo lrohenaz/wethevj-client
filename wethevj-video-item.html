@@ -58,11 +58,11 @@
     <polymer-ui-card vertical layout unresolved>
       <div horizontal center-justified layout>
           <div class="crop" flex five><img class="ty_img" width="350" src="{{video.media$group.media$thumbnail[0].url||video.snippet.thumbnails.medium.url}}" /></div>
-    	    <div flex three><h3>Played by</h3><paper-button id="account_icon" icon="account-circle" on-click="{{showAccountInfo}}" flex></paper-button></div>
+    	    <div horizontal top-justified layout flex three style="padding:10px;"><h3>Played by</h3><paper-button id="account_icon" icon="account-circle" on-click="{{showAccountInfo}}" flex></paper-button></div>
     	    <cw-vote id="voting" vid="{{vid}}" value="{{votes}}" flex one></cw-vote>
     	</div>
-    	<div horizontal layout flex>
-    	  <div  style="padding-right:10px;">
+    	<div horizontal layout>
+    	  <div  style="padding-right:10px;" flex>
           <h3>{{video.title.$t||video.snippet.title}}</h3>
     	    <span>{{video.published.$t||video.snippet.publishedAt}}</span><br />
     	    <span>{{video.content.$t||video.snippet.description}}</span>
@@ -91,7 +91,9 @@
       
       <!-- /* Queue Confirm Preview */ -->
       <paper-dialog heading="Add to Playlist" id="queueConfirm_{{vid}}" transition="paper-dialog-transition-center">
-        <h1>Are you Sure?</h1>
+        <h1>Ready to Play?</h1>
+        <span style="color:orange">Cost: 1 Coin</span><br />
+        <span>If you're sure this is the correct video, click 'Play', </span>
           <paper-button label="Cancel" icon="close" dismissive></paper-button>
         <paper-button icon="av:play-arrow" label="Add to Playlist" affirmative default on-click="{{sendToQueue}}"></paper-button>
       </paper-dialog>
@@ -99,6 +101,7 @@
       <!-- /* Player Account Info */ -->
       <paper-dialog heading="User Details" id="acctInfo_{{vid}}" transition="paper-dialog-transition-center">
         <h1>USERFIRST ANDLAST</h1>
+          <paper-icon id="account_icon" icon="account-circle"></paper-icon>
           <paper-button icon="close" label="Close" dismissive></paper-button>
           <paper-button icon="add-circle-outline" label="Friend Request" affirmative default on-click="{{friendRequest}}"></paper-button>
       </paper-dialog>

@@ -54,7 +54,7 @@
       <core-pages selected="{{ $.core_menu.selectedItem.id }}" selectedindex="0" notap id="core_pages">
         <section id="playlist_page" active>
           <!-- PLAYLIST -->
-          <paper-progress value="{{progress}}" id="paperProgress" style="width:100%;"></paper-progress>
+          <paper-progress value="{{progress}}" id="paperProgress" style="width:100%; margin-top:-13px;"></paper-progress>
           <polymer-ajax id="playlist_ajax" auto url="http://wethevj.com/wethevj/rpc.php" params='{"action":"get_queue", "type" : "json", "channel":"{{channel}}"}' handleas="json" on-polymer-response="{{ playlistResponse }}">
           </polymer-ajax>
             <polymer-ajax id="playlist_yt_ajax" auto url="https://www.googleapis.com/youtube/v3/videos" params='{"id":"{{playlist_vids}}", "key":"AIzaSyCP-KyJTdtbCJOSE6CHfSH-PvJeJlFVjUc", "part":"snippet"}' handleas="json" on-polymer-response="{{ playlistYtResponse }}">
@@ -78,7 +78,8 @@
                     
         </section>
         <section id="history_page">
-          <h1>HISTORY</h1>
+          <!-- HISTORY -->
+          <paper-progress value="{{progress}}" id="paperProgress" style="width:100%; margin-top:-13px;"></paper-progress>
           <polymer-ajax id="history_ajax" url="http://wethevj.com/wethevj/rpc.php" params='{"action":"get_history", "type" : "csv", "filter" : "youtube", "channel":"{{channel}}"}' handleas="json" on-polymer-response="{{ historyResponse }}">
           </polymer-ajax>
           <polymer-ajax id="history_yt_ajax" auto url="https://www.googleapis.com/youtube/v3/videos" params='{"id":"{{history_vids}}", "key":"AIzaSyCP-KyJTdtbCJOSE6CHfSH-PvJeJlFVjUc", "part":"snippet"}' handleas="json" on-polymer-response="{{ historyYtResponse }}">
@@ -89,7 +90,8 @@
           </template>
         </section>
         <section id="favorites_page">
-          <h1>FAVORITES</h1>
+          <!-- FAVORITES -->
+          <paper-progress value="{{progress}}" id="paperProgress" style="width:100%; margin-top:-13px;"></paper-progress>
           <polymer-ajax id="favorites_ajax" url="http://wethevj.com/wethevj/rpc.php" params='{"action":"get_favorites", "type" : "csv", "filter" : "youtube", "channel":"{{channel}}"}' handleas="json" on-polymer-response="{{ favoritesResponse }}">
           </polymer-ajax>
           <polymer-ajax id="favorites_yt_ajax" auto url="https://www.googleapis.com/youtube/v3/videos" params='{"id":"{{history_vids}}", "key":"AIzaSyCP-KyJTdtbCJOSE6CHfSH-PvJeJlFVjUc", "part":"snippet"}' handleas="json" on-polymer-response="{{ favoritesYtResponse }}">
@@ -97,19 +99,21 @@
         </section>
         <section id="chat_page">
           <!-- CHAT -->
-          <h1>CHAT</h1>
+          <paper-progress value="{{progress}}" id="paperProgress" style="width:100%; margin-top:-13px;"></paper-progress>
           <polymer-ui-card>
           
 
           </polymer-ui-card>
         </section>
         <section id="settings_page">
-          <h1>SETTINGS</h1>
+          <!-- SETTINGS -->
+          <paper-progress value="{{progress}}" id="paperProgress" style="width:100%; margin-top:-13px;"></paper-progress>
           <polymer-ajax id="settings_ajax" url="http://gdata.youtube.com/feeds/api/videos/" params='{"alt":"json", "q":"{{$.paper_input.inputValue}}"}' handleas="json" on-polymer-response="{{ settingsResponse }}">
           </polymer-ajax>
         </section>
         <section id="search_page">
-          <h1>SEARCH</h1>
+          <!-- SEARCH -->
+          <paper-progress value="{{progress}}" id="paperProgress" style="width:100%; margin-top:-13px;"></paper-progress>
           <polymer-ajax id="search_ajax" url="http://gdata.youtube.com/feeds/api/videos/" params='{"alt":"json", "q":"{{$.paper_input.inputValue}}"}' handleas="json" on-polymer-response="{{ searchResponse }}">
           </polymer-ajax>
           
@@ -129,7 +133,6 @@
           /* bind search bar to query attribute of my element */
           this.page="PLAYLIST";
           this.channel="unity88";
-          this.progress = 20;
       },
       menuClick: function() {
           this.shadowRoot.querySelector('#core_scaffold').closeDrawer();
@@ -188,6 +191,7 @@
     	  }
     	},
     	pageChanged: function(attr, newval, oldval) {
+    	  this.progress=20;
     	  console.log("Page changed from "+ oldval +" to "+ newval);
         this.shadowRoot.querySelector('#'+this.page.toLowerCase()+'_ajax').go();
     	},
