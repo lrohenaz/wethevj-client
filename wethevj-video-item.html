@@ -106,17 +106,17 @@
       <paper-dialog heading="User Details" id="acctInfo_{{vid}}" transition="paper-dialog-transition-center">
         <div horizontal layout>
           <img src="{{userIcon}}" />
-        </div>
-        <div horizontal layout flex>
-          <h1>USER HANDLE</h1>
-          <span>Plays: 57</span><br />
-          <span>Votes Received: 62</span><br />
-          <span>Comments:432</span><br />
+          <div vertical layout flex>
+            <h1>USER HANDLE</h1>
+            <span>Plays: 57</span><br />
+            <span>Votes Received: 62</span><br />
+            <span>Comments:432</span><br />
+          </div>
         </div>
         <div horizontal layout flex one>
           <paper-icon id="account_icon" icon="account-circle"></paper-icon>
           <paper-button icon="close" label="Close" dismissive></paper-button>
-          <paper-button icon="add-circle-outline" label="FFollow" affirmative default on-click="{{followUser}}"></paper-button>
+          <paper-button icon="add-circle-outline" label="Follow" affirmative default on-click="{{followUser}}"></paper-button>
         </div>      
         
       </paper-dialog>
