@@ -147,14 +147,18 @@
     	    this.progress += 20;
           console.log(rs);
                   /* animate the cards */
-        
+        var i=0;
         var animations = "";
         for(video in this.playlist_videos.items) {
           var targetElement = this.$.vid;
           console.log("target: "+ targetElement);
           var animation = new Animation(targetElement,
             [{opacity: '0'}, {opacity: '1.0'}], 2000);
-          animations.push(animation);
+          if(i>0) {
+            animations += ",";
+          }
+          animations += animation;
+          i++;
         }
         var animationGroup =  new AnimationGroup([new AnimationSequence([animations],{duration: 6000, delay: 3000, fill: 'none'})], {type: 'seq', iterations: 2, fill: 'forwards'});
         animationGroup.play();
