@@ -71,9 +71,9 @@
           </div>
           </template>
           
-            <core-animation-group type="seq"> 
+            <core-animation-group type="seq" id="animGroup"> 
               <template repeat="{{video in playlist_video_items}}">
-                <core-animation id="{{vid}}" target="#{{vid}}" easing="ease-in-out" duration="auto">
+                <core-animation target="document.getElementById('{{vid}}')" easing="ease-in-out" duration="auto">
                   <core-animation-keyframe>
                     <core-animation-prop name="opacity" value="0"></core-animation-prop>
                   </core-animation-keyframe>
@@ -188,6 +188,10 @@
     	},
     	pageChanged: function(attr, newval, oldval) {
     	  console.log("Page changed from "+ oldval +" to "+ newval);
+    
+        var animation = document.getElementById('animGroup');
+        animation.play();
+    
     	},
     	connectedChanged: function() {
     	  console.log('connected');
@@ -200,4 +204,4 @@
   
   </script>
 
-</polymer-element>
+</polymer-elem    
