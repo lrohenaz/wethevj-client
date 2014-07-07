@@ -124,7 +124,7 @@
           this.progress = 10;
       },
       menuClick: function() {
-          this.shadowRoot.querySelector('core_scaffold').closeDrawer=true;
+          this.shadowRoot.querySelector('#core_scaffold').closeDrawer();
       },
       searchResponse: function (e,rs) {
           this.search_videos=rs.response;
@@ -144,14 +144,14 @@
         this.progress += 10;
     	},
     	playlistYtResponse: function(e,rs) {
-    	    this.playlist_videos=rs.response;
-    	    this.progress += 20;
-          console.log(rs);
-                  /* animate the cards */
+    	  this.playlist_videos=rs.response;
+    	  this.progress += 20;
+        console.log(rs);
+        /* animate the cards */
         var i=0;
         var animations = "";
-        for(video in this.playlist_videos.items) {
-          console.log("Animate "+ video.id);
+        for(video in rs.response.items) {
+          console.log("animate this:");
           var targetElement = this.shadowRoot.querySelector('#'+video.id);
           console.log("target: "+ targetElement);
           var animation = new Animation(targetElement,[{opacity: '0'}, {opacity: '1.0'}], 2000);
