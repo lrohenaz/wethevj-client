@@ -183,7 +183,9 @@
     	  /* not sure why but oldval is all that works, newval has a big object in it */
     	  if(newval!="") {
     	    console.log(newval);
-      	  this.page="SEARCH";
+      	  if(newval.length()>3) {
+      	    this.page="SEARCH";
+      	  }
     	  }
     	},
     	progressChanged: function(attr, newval, oldval) {

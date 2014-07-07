@@ -1,8 +1,8 @@
-#paperProgress::shadow. {
+::shadow #paperProgress {
   width:100%;
 }
-wethevj-client::shadow paper-progress::shadow #activeProgress {
-  background-color:lime;
+::shadow #paperprogress::shadow #activeProgress {
+  background-color:red;
   border-bottom:1px solid #000;
 }
 shadow::#activeProgress {
