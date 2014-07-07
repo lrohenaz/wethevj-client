@@ -183,8 +183,9 @@
     	  /* not sure why but oldval is all that works, newval has a big object in it */
     	  if(newval!="") {
     	    console.log(newval);
-      	  if(newval.length()>3) {
+      	  if(newval.length>4) {
       	    this.page="SEARCH";
+      	    
       	  }
     	  }
     	},
@@ -196,7 +197,8 @@
     	},
     	pageChanged: function(attr, newval, oldval) {
     	  console.log("Page changed from "+ oldval +" to "+ newval);
-          this.shadowRoot.querySelector('#'+this.page.toLowerCase()+'_ajax').go();
+    	    var page_ajax = this.shadowRoot.querySelector('#'+this.page.toLowerCase()+'_ajax');
+          page_ajax.go();
     	},
     	connectedChanged: function() {
     	  console.log('connected');
