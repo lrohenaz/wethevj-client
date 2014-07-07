@@ -156,10 +156,10 @@
             [{opacity: '0'}, {opacity: '1.0'}], 2000);
           animations.push(animation);
         }
-        var animationGroup =  new AnimationSequence(animations, {type: 'seq', iterations: 2, fill: 'forwards'});
+        var animationGroup =  new AnimationGroup([new AnimationSequence([animations],{duration: 6000, delay: 3000, fill: 'none'})], {type: 'seq', iterations: 2, fill: 'forwards'});
         animationGroup.play();
         
-          console.log(rs);
+        console.log(rs);
     	},
       historyResponse: function (e,rs) {
           this.history_vids=e.detail.response;
