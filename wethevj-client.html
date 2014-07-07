@@ -185,8 +185,7 @@
     	},
     	pageChanged: function(attr, newval, oldval) {
     	  console.log("Page changed from "+ oldval +" to "+ newval);
-    	    var page_ajax = this.shadowRoot.querySelector('#'+this.page.toLowerCase()+'_ajax');
-          page_ajax.go();
+        this.shadowRoot.querySelector('#'+this.page.toLowerCase()+'_ajax').go();
     	},
     	connectedChanged: function() {
     	  console.log('connected');
