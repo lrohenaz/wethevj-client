@@ -141,10 +141,15 @@
         this.queue = e.detail.response.queue;
         /* update progress bar */
         this.progress += 10;
-        /* animate the cards */
+    	},
+    	playlistYtResponse: function(e,rs) {
+    	    this.playlist_videos=rs.response;
+    	    this.progress += 20;
+          console.log(rs);
+                  /* animate the cards */
         
         var animations = "";
-        for(video in this.playlist_vids.items) {
+        for(video in this.playlist_videos.items) {
           var targetElement = this.$.vid;
           console.log("target: "+ targetElement);
           var animation = new Animation(targetElement,
@@ -154,11 +159,6 @@
         var animationGroup =  new AnimationSequence(animations, {type: 'seq', iterations: 2, fill: 'forwards'});
         animationGroup.play();
         
-          console.log(rs);
-    	},
-    	playlistYtResponse: function(e,rs) {
-    	    this.playlist_videos=rs.response;
-    	    this.progress += 20;
           console.log(rs);
     	},
       historyResponse: function (e,rs) {
