@@ -135,9 +135,25 @@
           console.log(rs.response);
     	},
       playlistResponse: function (e,rs) {
-          this.playlist_vids=e.detail.response.csv_list;
-          this.queue = e.detail.response.queue;
-          this.progress += 10;
+        /* get youtube videos */
+        this.playlist_vids=e.detail.response.csv_list;
+        /* get database queue */
+        this.queue = e.detail.response.queue;
+        /* update progress bar */
+        this.progress += 10;
+        /* animate the cards */
+        
+        var animations[];
+        for(video in playlist__video.items) {
+          var targetElement = this.$.vid;
+          var animation = new Animation(targetElement,
+            [{opacity: '0'}, {opacity: '1.0'}], 2000);
+        
+          animations.push(animation);
+        }
+        var animationGroup =  new AnimationSequence(animations, {iterations: 2, fill: 'forwards'});
+        animation.play();
+        
           console.log(rs);
     	},
     	playlistYtResponse: function(e,rs) {
@@ -171,16 +187,7 @@
     	pageChanged: function(attr, newval, oldval) {
     	  console.log("Page changed from "+ oldval +" to "+ newval);
     
-        var animationGroup = new AnimationGroup([
-        new AnimationSequence([
-            for(video in playlist_videos.items) {
-              new Animation(this.vid, {duration: 3000})
-            }          
-          ], {duration: 6000, delay: 3000, fill: 'none'}),
-          new Animation(..., {duration: 8000, fill: 'forwards'})
-        ], {iterations: 2, fill: 'forwards'});
 
-        animationGroup.play();
     
     	},
     	connectedChanged: function() {
