@@ -56,7 +56,7 @@
           <polymer-ui-card vertical layout unresolved>
             <div horizontal center-justified layout>
                 <div class="crop" flex three><img class="ty_img" width="350" src="{{video.media$group.media$thumbnail[0].url||video.snippet.thumbnails.medium.url}}" /></div>
-          	    <div flex two><h3>Played by</h3><paper-button id="account_icon" icon="account-circle" on-click"{{showAccountInfo}}" flex></paper-button></div>
+          	    <div flex two><h3>Played by</h3><paper-button id="account_icon" icon="account-circle" on-click="{{showAccountInfo}}" flex></paper-button></div>
           	    <cw-vote vid="{{vid}}" value="{{votes}}" flex one></cw-vote>
           	</div>
           	<div horizontal layout>
