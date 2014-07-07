@@ -56,7 +56,7 @@
           <polymer-ui-card vertical layout unresolved>
             <div horizontal center-justified layout>
                 <div class="crop" flex two><img class="ty_img" width="350" src="{{video.media$group.media$thumbnail[0].url||video.snippet.thumbnails.medium.url}}" /></div>
-          	    <div flex one>Played by<br /><paper-button-icon id="account_icon" icon="account-circle"></paper-button-icon></div>
+          	    <div flex one>Played by<br /><paper-button id="account_icon" icon="account-circle" on-click"{{showAccountInfo}}"></paper-button></div>
           	    <cw-vote vid="{{vid}}" value="{{votes}}" flex one></cw-vote>
           	</div>
           	<div horizontal layout>
@@ -92,6 +92,14 @@
                 <paper-button label="Cancel" dismissive></paper-button>
               <paper-button icon="av:play-arrow" label="Att to Playlist" affirmative default on-click="{{sendToQueue}}"></paper-button>
             </paper-dialog>
+
+            <!-- /* Player Account Info */ -->
+            <paper-dialog heading="User Details" id="acctInfo_{{vid}}" transition="paper-dialog-transition-center">
+              <h1>USERFIRST ANDLAST</h1>
+                <paper-button icon="close" label="Close" dismissive></paper-button>
+                <paper-button icon="add-circle-outline" label="Friend Request" affirmative default on-click="{{friendRequest}}"></paper-button>
+            </paper-dialog>
+            
           </polymer-ui-card>
           
           <paper-toast id="queued_toast" text="Video added to Playlist"></paper-toast>
@@ -124,6 +132,11 @@
           }
         }
       },
+      showAccountInfo: function() {
+        console.log("Show account info");
+        var acctDialog = this.shadowRoot.querySelector('#acctInfo_'+this.vid);
+        acctDialog.toggle(); 
+      },
       togglePreviewDialog: function() {
         console.log("Toggle the vid");
         var previewDialog = this.shadowRoot.querySelector('#preview_'+this.vid);
@@ -141,6 +154,9 @@
       },
       attached: function() {
         console.log("video item attached to dom");
+      },
+      friendRequest: function() {
+        console.log("Friend Request");
       }
     });
   </script>
