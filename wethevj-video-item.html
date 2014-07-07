@@ -119,7 +119,7 @@
       sendToQueue: function() {
         /* Ajax call to add video to the queue */
         console.log("send to http://wethevj.com/wethevj/rpc.php?action=addToQueue&vid="+this.vid+"&service=youtube");
-        document.shadowRoot.querySelector('#queued_toast').show();
+        this.shadowRoot.querySelector('#queued_toast').show();
       }
     });
   </script>
