@@ -195,7 +195,7 @@
     	pageChanged: function(attr, newval, oldval) {
     	  console.log("Page changed from "+ oldval +" to "+ newval);
         if(this.page=="HISTORY") {
-          this.querySelector('#history_ajax').go();
+          this.shadowRoot.querySelector('#history_ajax').go();
         }
 
     
