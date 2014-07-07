@@ -17,7 +17,7 @@
 @homepage https://.../wethevj-video-item
 -->
 
-<polymer-element name="wethevj-video-item" attributes="video queue vid width show_voting show_addToQueue">
+<polymer-element name="wethevj-video-item" attributes="video queue vid show_voting show_addToQueue">
   <template id="template">
     <style type="text/css">
     [resolved] {
@@ -38,12 +38,13 @@
     }
     polymer-ui-card {
       display: block;
-      width:{{width||90%}};
-      margin: 20px auto;
-      padding: 30px;
+      width:90%;
+      margin: auto;
+      padding: 20px;
     } 
     cw-vote {
-      margin:10px;
+      margin-right: -30px;
+      margin-top: -10px;
     }
     #account_icon { 
       width:128px;
@@ -125,7 +126,7 @@
     Polymer('wethevj-video-item', {
       ready: function() {
         this.vid = this.video.id;
-        this.userIcon = "images/new_user_icon.jpg";
+        this.userIcon = "bower_components/wethevj-client/images/new_user_icon.jpg";
         this.votes=0;
         if(this.show_voting==true) {
           console.log("Show voting enabled");
@@ -195,4 +196,4 @@
     });
   </script>
 
-</polymer-element>  
+</polymer-element>
