@@ -71,7 +71,7 @@
         </section>
         <section id="explore_page">
           <!-- EXPLORE -->
-          <polymer-ajax id="explore_axa" url="https://www.googleapis.com/youtube/v3/search" params='{"key":"AIzaSyCP-KyJTdtbCJOSE6CHfSH-PvJeJlFVjUc", "regionCode" : "US", "videoEmbeddable" : "true", "maxResults" : "25", "order" : "rating", "type" : "video", "videoCategoryId" : "10", "part":"snippet"}' handleas="json" on-polymer-response="{{ exploreResponse }}">
+          <polymer-ajax id="explore_ajax" url="https://www.googleapis.com/youtube/v3/search" params='{"key":"AIzaSyCP-KyJTdtbCJOSE6CHfSH-PvJeJlFVjUc", "regionCode" : "US", "videoEmbeddable" : "true", "maxResults" : "25", "order" : "rating", "type" : "video", "videoCategoryId" : "10", "part":"snippet"}' handleas="json" on-polymer-response="{{ exploreResponse }}">
           </polymer-ajax>
           
           <template repeat="{{video in explore_videos.items}}">
