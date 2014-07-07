@@ -101,7 +101,7 @@
           <!-- CHAT -->
           <paper-progress value="{{progress}}" id="paperProgress" style="width:100%; margin-top:-13px;"></paper-progress>
           <polymer-ui-card>
-          
+            CHATSSSS
 
           </polymer-ui-card>
         </section>
@@ -140,9 +140,11 @@
       searchResponse: function (e,rs) {
           this.search_videos=rs.response;
           console.log(rs.response);
+          this.progress += 50;
     	},
       exploreResponse: function (e,rs) {
           this.explore_videos=rs.response;
+          this.progress += 50;
           console.log(rs.response);
     	},
       playlistResponse: function (e,rs) {

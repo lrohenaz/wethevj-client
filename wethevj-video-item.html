@@ -49,7 +49,6 @@
         -moz-transform: scale(5); 
         -webkit-transform: scale(5); 
         transform: scale(5); /* 48px */
-        min-height:150px;
         fill: rgb(255,0,0);
     }
     </style>
@@ -60,7 +59,7 @@
           <div class="crop" flex five><img class="ty_img" width="350" src="{{video.media$group.media$thumbnail[0].url||video.snippet.thumbnails.medium.url}}" /></div>
     	    <div horizontal top-justified layout flex three style="padding:10px;">
     	      <h3>Played by</h3><br />
-    	      <paper-button id="account_icon" icon="account-circle" on-click="{{showAccountInfo}}" flex></paper-button>
+    	      <paper-button id="account_icon" icon="account-circle" style="min-height:150px;" on-click="{{showAccountInfo}}" flex></paper-button>
     	    </div>
     	    <cw-vote id="voting" vid="{{vid}}" value="{{votes}}" flex one></cw-vote>
     	</div>
