@@ -45,11 +45,19 @@
             cw-vote {
               margin:10px;
             }
+            #account_icon::shadow core-icon{ 
+                -moz-transform: scale(2); 
+                -webkit-transform: scale(2); 
+                transform: scale(2); /* 48px */
+            
+                fill: rgb(255,255,255);
+            }
             </style>
           <polymer-ui-card vertical layout unresolved>
             <div horizontal center-justified layout>
-                <div class="crop"><img class="ty_img" width="350" src="{{video.media$group.media$thumbnail[0].url||video.snippet.thumbnails.medium.url}}" /></div>
-          	    <cw-vote vid="{{vid}}" value="{{votes}}"></cw-vote>
+                <div class="crop" flex two><img class="ty_img" width="350" src="{{video.media$group.media$thumbnail[0].url||video.snippet.thumbnails.medium.url}}" /></div>
+          	    <div flex one>Played by<br /><paper-button-icon id="account_icon" icon="account-circle"></paper-button-icon></div>
+          	    <cw-vote vid="{{vid}}" value="{{votes}}" flex one></cw-vote>
           	</div>
           	<div horizontal layout>
           	  <div  style="padding-right:10px;" flex>
