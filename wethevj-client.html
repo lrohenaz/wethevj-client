@@ -152,7 +152,7 @@
         var animations = "";
         for(video in rs.response.items) {
           console.log("animate this:");
-          var targetElement = this.shadowRoot.querySelector('wethevj-video-item');
+          var targetElement = this.shadowRoot.querySelector('polymer-ui-card');
           console.log("target: "+ targetElement);
           var animation = new Animation(targetElement,[{opacity: '0'}, {opacity: '1.0'}], 2000);
           if(i>0) {
