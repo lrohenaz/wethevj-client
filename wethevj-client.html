@@ -21,6 +21,7 @@
 <link rel="import" href="../paper-progress/paper-progress.html" />
 <link rel="import" href="../core-animation/core-animation.html">
 <link rel="import" href="../core-animation/core-animation-group.html">
+<link rel="import" href="../core-animation/web-animations.html">
 <polymer-element name="wethevj-client" attributes="progress query page channel">
   <template>
     <style type="text/css">
@@ -187,8 +188,6 @@
     	  }
     	},
     	pageChanged: function(attr, newval, oldval) {
-    	  var wtvj = this.querySelector('wethevj-video-item');
-    	  console.log(wtvj);
     	  console.log("Page changed from "+ oldval +" to "+ newval);
 
          document.timeline.play();
