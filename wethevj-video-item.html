@@ -15,7 +15,7 @@
 @homepage https://.../wethevj-video-item
 -->
 
-<polymer-element name="wethevj-video-item" attributes="video queue vid votes">
+<polymer-element name="wethevj-video-item" attributes="video queue vid votes show_voting show_addToQueue">
           <template id="template">
             <style type="text/css">
             [resolved] {
@@ -89,7 +89,12 @@
       ready: function() {
         this.vid = this.video.id;
         this.votes=0;
-        
+        if(this.showVoting==true) {
+          
+        }
+        if(this.showaddToQueue==true) {
+          
+        }
         if(this.video.id.$t) {
           console.log("old school youtube feed detected");
           var n = this.video.id.$t.lastIndexOf('/');

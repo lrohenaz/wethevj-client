@@ -46,7 +46,7 @@
           <paper-item label="FAVORITES" icon="favorite" id="3" on-click="{{ menuClick }}" center horizontal layout center-justified></paper-item>
           <paper-item label="CHATROOM" icon="account-circle" id="4" on-click="{{ menuClick }}" center horizontal layout center-justified></paper-item>
           <paper-item label="SETTINGS" icon="settings" id="5" on-click="{{ menuClick }}" center horizontal layout center-justified></paper-item>
-          <paper-item label="SEARCH" icon="search" id="6" on-click="{{ menuClick }}" center horizontal layout center-justified></paper-item>
+          <paper-item style="display:none;" label="SEARCH" icon="search" id="6" on-click="{{ menuClick }}" center horizontal layout center-justified></paper-item>
           FB Login:<br />
           <facebook-login appID="546051685467074"></facebook-login>
         </core-menu>
@@ -92,11 +92,16 @@
         </section>
         <section id="favorites_page">
           <h1>FAVORITES</h1>
+          <polymer-ajax id="favorites_ajax" url="http://wethevj.com/wethevj/rpc.php" params='{"action":"get_favorites", "type" : "csv", "filter" : "youtube", "channel":"{{channel}}"}' handleas="json" on-polymer-response="{{ favoritesResponse }}">
+          </polymer-ajax>
+          <polymer-ajax id="favorites_yt_ajax" auto url="https://www.googleapis.com/youtube/v3/videos" params='{"id":"{{history_vids}}", "key":"AIzaSyCP-KyJTdtbCJOSE6CHfSH-PvJeJlFVjUc", "part":"snippet"}' handleas="json" on-polymer-response="{{ favoritesYtResponse }}">
+          </polymer-ajax>
         </section>
         <section id="chat_page">
           <!-- CHAT -->
-          <polymer-ui-card>
           <h1>CHAT</h1>
+          <polymer-ui-card>
+          
 
           </polymer-ui-card>
         </section>
@@ -145,28 +150,29 @@
         /* get database queue */
         this.queue = e.detail.response.queue;
         /* update progress bar */
-        this.progress += 10;
+        this.progress += 20;
     	},
     	playlistYtResponse: function(e,rs) {
     	  this.playlist_videos=rs.response;
     	  this.progress += 20;
         console.log(rs);
-
-        
-        console.log(rs);
+    	},
+    	favoritesResponse: function(e,rs) {
+    	    this.favorites_vids=e.detail.response;
+    	},
+    	favoritesYtResponse: function(e,rs) {
+    	    this.favorites_videos=rs.response;
     	},
       historyResponse: function (e,rs) {
           this.history_vids=e.detail.response;
-          this.progress += 10;
           console.log(rs);
     	},
     	historyYtResponse: function(e,rs) {
     	    this.history_videos=rs.response;
-    	    this.progress += 10;
-          console.log(rs);
+    	    console.log(rs);
     	},
     	settingsResponse: function() {
-    	  
+    	    console.log("Settings Response");
     	},
     	queryChanged: function(attr,newval,oldval) {
     	  /* not sure why but oldval is all that works, newval has a big object in it */
