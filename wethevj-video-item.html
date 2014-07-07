@@ -18,93 +18,96 @@
 -->
 
 <polymer-element name="wethevj-video-item" attributes="video queue vid show_voting show_addToQueue">
-          <template id="template">
-            <style type="text/css">
-            [resolved] {
-              opacity: 1;
-              transition: opacity 300ms;
-            }
-            [unresolved] {
-              opacity: 0;
-            /* other custom styles for unresolved elements */
-            }
-            .crop {
-                width: 250px;
-                overflow: hidden;
-              	margin-right:0px;
-            }
-            .crop img {
-                margin: -20px;
-            }
-            polymer-ui-card {
-              display: block;
-              max-width:605px;
-              margin: 20px auto;
-              padding: 30px;
-            } 
-            cw-vote {
-              margin:10px;
-            }
-            #account_icon::shadow core-icon{ 
-                -moz-transform: scale(5); 
-                -webkit-transform: scale(5); 
-                transform: scale(5); /* 48px */
-                
-                fill: rgb(255,0,0);
-            }
-            </style>
-          <polymer-ui-card vertical layout unresolved>
-            <div horizontal center-justified layout>
-                <div class="crop" flex five><img class="ty_img" width="350" src="{{video.media$group.media$thumbnail[0].url||video.snippet.thumbnails.medium.url}}" /></div>
-          	    <div flex three><h3>Played by</h3><paper-button id="account_icon" icon="account-circle" on-click="{{showAccountInfo}}" flex></paper-button></div>
-          	    <cw-vote id="voting" vid="{{vid}}" value="{{votes}}" flex one></cw-vote>
-          	</div>
-          	<div horizontal layout>
-          	  <div  style="padding-right:10px;" flex>
-                <h3>{{video.title.$t||video.snippet.title}}</h3>
-          	    <span>{{video.published.$t||video.snippet.publishedAt}}</span><br />
-          	    <span>{{video.content.$t||video.snippet.description}}</span>
-          	  </div>
-            </div>
-          <div horizontal layout start>
-            <div style="height:100%:" vertical layout>
-            <div horizontal layout><core-icon icon="star"></core-icon><core-icon icon="star"></core-icon><core-icon icon="star"></core-icon><core-icon icon="star"></core-icon><core-icon icon="star-outline"></core-icon></div>
-            </div>
-            <div horizontal end-justified layout flex>
-              <div horizontal center-justified layout>
-                <paper-button icon="theaters" on-click="{{togglePreviewDialog}}"></paper-button>
-                <core-icon-button id="favorite" icon="favorite-outline" on-click="{{toggleFavorite}}"></core-icon-button>
-                <paper-button id="addToQueue" icon="av:play-arrow" on-click="{{sendToQueueConfirm}}" unresolved></paper-button>
-              </div>
-            </div>
-           <!-- /* Video Preview */ -->
-            <paper-dialog heading="Preview" id="preview_{{vid}}" transition="paper-dialog-transition-center">
-              <object height="350" width="425">
-                <param name="movie" value="http://www.youtube.com/v/{{vid}}" />
-                <embed height="350" src="http://www.youtube.com/v/{{vid}}?showinfo=no&autoplay=1&&iv_load_policy=3&fs=0&rel=0&showsearch=0&hd=1" type="application/x-shockwave-flash" width="425"></embed>
-              </object>
-              <paper-button label="Play" icon="av:play-arrow" affirmative></paper-button><paper-button icon="close" label="Close" dismissive></paper-button>
-            </paper-dialog>
-            
-            <!-- /* Queue Confirm Preview */ -->
-            <paper-dialog heading="Add to Playlist" id="queueConfirm_{{vid}}" transition="paper-dialog-transition-center">
-              <h1>Are you Sure?</h1>
-                <paper-button label="Cancel" icon="close" dismissive></paper-button>
-              <paper-button icon="av:play-arrow" label="Att to Playlist" affirmative default on-click="{{sendToQueue}}"></paper-button>
-            </paper-dialog>
-
-            <!-- /* Player Account Info */ -->
-            <paper-dialog heading="User Details" id="acctInfo_{{vid}}" transition="paper-dialog-transition-center">
-              <h1>USERFIRST ANDLAST</h1>
-                <paper-button icon="close" label="Close" dismissive></paper-button>
-                <paper-button icon="add-circle-outline" label="Friend Request" affirmative default on-click="{{friendRequest}}"></paper-button>
-            </paper-dialog>
-            
-          </polymer-ui-card>
-          
-          <paper-toast id="queued_toast" text="Video added to Playlist"></paper-toast>
-          <paper-toast id="favorited_toast" text="Video added to Favorites"></paper-toast>
-        </template>
+  <template id="template">
+    <style type="text/css">
+    [resolved] {
+      opacity: 1;
+      transition: opacity 300ms;
+    }
+    [unresolved] {
+      opacity: 0;
+    /* other custom styles for unresolved elements */
+    }
+    .crop {
+        width: 250px;
+        overflow: hidden;
+      	margin-right:0px;
+    }
+    .crop img {
+        margin: -20px;
+    }
+    polymer-ui-card {
+      display: block;
+      max-width:605px;
+      margin: 20px auto;
+      padding: 30px;
+    } 
+    cw-vote {
+      margin:10px;
+    }
+    #account_icon::shadow core-icon{ 
+        -moz-transform: scale(5); 
+        -webkit-transform: scale(5); 
+        transform: scale(5); /* 48px */
+        
+        fill: rgb(255,0,0);
+    }
+    </style>
+    
+    
+    <polymer-ui-card vertical layout unresolved>
+      <div horizontal center-justified layout>
+          <div class="crop" flex five><img class="ty_img" width="350" src="{{video.media$group.media$thumbnail[0].url||video.snippet.thumbnails.medium.url}}" /></div>
+    	    <div flex three><h3>Played by</h3><paper-button id="account_icon" icon="account-circle" on-click="{{showAccountInfo}}" flex></paper-button></div>
+    	    <cw-vote id="voting" vid="{{vid}}" value="{{votes}}" flex one></cw-vote>
+    	</div>
+    	<div horizontal layout flex>
+    	  <div  style="padding-right:10px;">
+          <h3>{{video.title.$t||video.snippet.title}}</h3>
+    	    <span>{{video.published.$t||video.snippet.publishedAt}}</span><br />
+    	    <span>{{video.content.$t||video.snippet.description}}</span>
+    	  </div>
+      </div>
+    <div horizontal layout start>
+      <div style="height:100%:" vertical layout>
+      <div horizontal layout><core-icon icon="star"></core-icon><core-icon icon="star"></core-icon><core-icon icon="star"></core-icon><core-icon icon="star"></core-icon><core-icon icon="star-outline"></core-icon></div>
+      </div>
+      <div horizontal end-justified layout flex>
+        <div horizontal center-justified layout>
+          <paper-button icon="theaters" on-click="{{togglePreviewDialog}}"></paper-button>
+          <core-icon-button id="favorite" icon="favorite-outline" on-click="{{toggleFavorite}}"></core-icon-button>
+          <paper-button id="addToQueue" icon="av:play-arrow" on-click="{{sendToQueueConfirm}}" unresolved></paper-button>
+        </div>
+      </div>
+      
+     <!-- /* Video Preview */ -->
+      <paper-dialog heading="Preview" id="preview_{{vid}}" transition="paper-dialog-transition-center">
+        <object height="350" width="425">
+          <param name="movie" value="http://www.youtube.com/v/{{vid}}" />
+          <embed height="350" src="http://www.youtube.com/v/{{vid}}?showinfo=no&autoplay=1&&iv_load_policy=3&fs=0&rel=0&showsearch=0&hd=1" type="application/x-shockwave-flash" width="425"></embed>
+        </object>
+        <paper-button id="addToQueueBtn" label="Play" icon="av:play-arrow" affirmative></paper-button><paper-button icon="close" label="Close" dismissive></paper-button>
+      </paper-dialog>
+      
+      <!-- /* Queue Confirm Preview */ -->
+      <paper-dialog heading="Add to Playlist" id="queueConfirm_{{vid}}" transition="paper-dialog-transition-center">
+        <h1>Are you Sure?</h1>
+          <paper-button label="Cancel" icon="close" dismissive></paper-button>
+        <paper-button icon="av:play-arrow" label="Add to Playlist" affirmative default on-click="{{sendToQueue}}"></paper-button>
+      </paper-dialog>
+  
+      <!-- /* Player Account Info */ -->
+      <paper-dialog heading="User Details" id="acctInfo_{{vid}}" transition="paper-dialog-transition-center">
+        <h1>USERFIRST ANDLAST</h1>
+          <paper-button icon="close" label="Close" dismissive></paper-button>
+          <paper-button icon="add-circle-outline" label="Friend Request" affirmative default on-click="{{friendRequest}}"></paper-button>
+      </paper-dialog>
+      
+    </polymer-ui-card>
+    
+    <paper-toast id="queued_toast" text="Video added to Playlist"></paper-toast>
+    <paper-toast id="favorited_toast" text="Video added to Favorites"></paper-toast>
+  </template>
   <script>
     Polymer('wethevj-video-item', {
       ready: function() {
@@ -164,6 +167,7 @@
       sendToQueue: function() {
         /* Ajax call to add video to the queue */
         console.log("send to http://wethevj.com/wethevj/rpc.php?action=addToQueue&vid="+this.vid+"&service=youtube");
+        this.shadowRoot.querySelector('#addToQueueBtn').setAtttribute('icon','av:play-arrow-outline');
         this.shadowRoot.querySelector('#queued_toast').show();
       },
       attached: function() {
