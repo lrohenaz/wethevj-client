@@ -1,11 +1,11 @@
-::shadow #paperProgress {
+#paperProgress::shadow {
   width:100%;
 }
-::shadow #paperprogress::shadow #activeProgress {
+#paperprogress::shadow #activeProgress {
   background-color:red;
   border-bottom:1px solid #000;
 }
-shadow::#activeProgress {
+#activeProgress::shadow {
   /* default background-color: #0f9d58; */
   background-color:lime;
   border-bottom:1px solid #000;

@@ -45,20 +45,9 @@
     cw-vote {
       margin:10px;
     }
-    #account_icon::shadow core-icon{ 
-        -moz-transform: scale(5); 
-        -webkit-transform: scale(5); 
-        transform: scale(5); /* 48px */
-        fill: rgb(255,0,0);
-        height:100px;
-        height:9px;
-    }
-    #account_icon::shadow core-icon svg{ 
-        height:'';
-        width:'';
-    }
-    #account_icon::shadow #clip {
-      min-height:100px;
+    #account_icon { 
+      width:128px;
+      height:128px;
     }
     </style>
     
@@ -68,7 +57,7 @@
           <div class="crop" flex five><img class="ty_img" width="350" src="{{video.media$group.media$thumbnail[0].url||video.snippet.thumbnails.medium.url}}" /></div>
     	    <div vertical top-justified layout flex three style="padding:10px;">
     	      <h3 style="width:100%;margin-top:-15px;">Played by</h3>
-    	      <paper-button id="account_icon" icon="account-circle" on-click="{{showAccountInfo}}" flex></paper-button>
+    	      <img src="../images/new_user.jpg" id="account_icon" on-click="{{showAccountInfo}}" flex></paper-button>
     	    </div>
     	    <cw-vote id="voting" vid="{{vid}}" value="{{votes}}" flex one></cw-vote>
     	</div>
