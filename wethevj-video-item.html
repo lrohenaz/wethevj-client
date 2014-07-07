@@ -57,7 +57,7 @@
           <div class="crop" flex five><img class="ty_img" width="350" src="{{video.media$group.media$thumbnail[0].url||video.snippet.thumbnails.medium.url}}" /></div>
     	    <div vertical top-justified layout flex three style="padding:10px;">
     	      <h3 style="width:100%;margin-top:-15px;">Played by</h3>
-    	      <img src="images/new_user_icon.jpg" id="account_icon" on-click="{{showAccountInfo}}" flex></paper-button>
+    	      <img src="{{userIcon}}" id="account_icon" on-click="{{showAccountInfo}}" flex></paper-button>
     	    </div>
     	    <cw-vote id="voting" vid="{{vid}}" value="{{votes}}" flex one></cw-vote>
     	</div>
@@ -99,10 +99,21 @@
   
       <!-- /* Player Account Info */ -->
       <paper-dialog heading="User Details" id="acctInfo_{{vid}}" transition="paper-dialog-transition-center">
-        <h1>USERFIRST ANDLAST</h1>
+        <div horizontal layout>
+          <img src="{{userIcon}}" />
+        </div>
+        <div horizontal layout flex>
+          <h1>USER HANDLE</h1>
+          <span>Plays: 57</span><br />
+          <span>Votes Received: 62</span><br />
+          <span>Comments:432</span><br />
+        </div>
+        <div horizontal layout flex one>
           <paper-icon id="account_icon" icon="account-circle"></paper-icon>
           <paper-button icon="close" label="Close" dismissive></paper-button>
-          <paper-button icon="add-circle-outline" label="Friend Request" affirmative default on-click="{{friendRequest}}"></paper-button>
+          <paper-button icon="add-circle-outline" label="FFollow" affirmative default on-click="{{followUser}}"></paper-button>
+        </div>      
+        
       </paper-dialog>
       
     </polymer-ui-card>
@@ -114,6 +125,7 @@
     Polymer('wethevj-video-item', {
       ready: function() {
         this.vid = this.video.id;
+        this.userIcon = "images/new_user_icon.jpg";
         this.votes=0;
         if(this.show_voting==true) {
           console.log("Show voting enabled");
@@ -177,8 +189,8 @@
         console.log("video item attached to dom");
         this.setAttribute('resolved', '');
       },
-      friendRequest: function() {
-        console.log("Friend Request");
+      followUser: function() {
+        console.log("Follow user (add to explore stream?)");
       }
     });
   </script>
