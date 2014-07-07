@@ -55,7 +55,7 @@
       <core-pages selected="{{ $.core_menu.selectedItem.id }}" selectedindex="0" notap id="core_pages">
         <section id="playlist_page" active>
           <!-- PLAYLIST -->
-          <paper-progress value="{{progress}}" id="paperProgress"></paper-progress>
+          <paper-progress value="{{progress}}" id="paperProgress" style="width:100%;"></paper-progress>
           <polymer-ajax id="playlist_ajax" auto url="http://wethevj.com/wethevj/rpc.php" params='{"action":"get_queue", "type" : "json", "channel":"{{channel}}"}' handleas="json" on-polymer-response="{{ playlistResponse }}">
           </polymer-ajax>
             <polymer-ajax id="playlist_yt_ajax" auto url="https://www.googleapis.com/youtube/v3/videos" params='{"id":"{{playlist_vids}}", "key":"AIzaSyCP-KyJTdtbCJOSE6CHfSH-PvJeJlFVjUc", "part":"snippet"}' handleas="json" on-polymer-response="{{ playlistYtResponse }}">
@@ -71,7 +71,7 @@
         </section>
         <section id="explore_page">
           <!-- EXPLORE -->
-          <polymer-ajax id="explore_axap" auto url="https://www.googleapis.com/youtube/v3/search" params='{"key":"AIzaSyCP-KyJTdtbCJOSE6CHfSH-PvJeJlFVjUc", "regionCode" : "US", "videoEmbeddable" : "true", "maxResults" : "25", "order" : "rating", "type" : "video", "videoCategoryId" : "10", "part":"snippet"}' handleas="json" on-polymer-response="{{ exploreResponse }}">
+          <polymer-ajax id="explore_axa" url="https://www.googleapis.com/youtube/v3/search" params='{"key":"AIzaSyCP-KyJTdtbCJOSE6CHfSH-PvJeJlFVjUc", "regionCode" : "US", "videoEmbeddable" : "true", "maxResults" : "25", "order" : "rating", "type" : "video", "videoCategoryId" : "10", "part":"snippet"}' handleas="json" on-polymer-response="{{ exploreResponse }}">
           </polymer-ajax>
           
           <template repeat="{{video in explore_videos.items}}">
@@ -102,10 +102,12 @@
         </section>
         <section id="settings_page">
           <h1>SETTINGS</h1>
+          <polymer-ajax id="settings_ajax" url="http://gdata.youtube.com/feeds/api/videos/" params='{"alt":"json", "q":"{{$.paper_input.inputValue}}"}' handleas="json" on-polymer-response="{{ settingsResponse }}">
+          </polymer-ajax>
         </section>
         <section id="search_page">
           <h1>SEARCH</h1>
-          <polymer-ajax id="polymer_ajax" url="http://gdata.youtube.com/feeds/api/videos/" params='{"alt":"json", "q":"{{$.paper_input.inputValue}}"}' handleas="json" on-polymer-response="{{ searchResponse }}">
+          <polymer-ajax id="search_ajax" url="http://gdata.youtube.com/feeds/api/videos/" params='{"alt":"json", "q":"{{$.paper_input.inputValue}}"}' handleas="json" on-polymer-response="{{ searchResponse }}">
           </polymer-ajax>
           
           <template id="template" repeat="{{video in search_videos.feed.entry}}">
@@ -124,7 +126,7 @@
           /* bind search bar to query attribute of my element */
           this.page="PLAYLIST";
           this.channel="unity88";
-          this.progress = 10;
+          this.progress = 20;
       },
       menuClick: function() {
           this.shadowRoot.querySelector('#core_scaffold').closeDrawer();
@@ -135,7 +137,6 @@
     	},
       exploreResponse: function (e,rs) {
           this.explore_videos=rs.response;
-          this.progress += 10;
           console.log(rs.response);
     	},
       playlistResponse: function (e,rs) {
@@ -164,13 +165,15 @@
     	    this.progress += 10;
           console.log(rs);
     	},
+    	settingsResponse: function() {
+    	  
+    	},
     	queryChanged: function(attr,newval,oldval) {
     	  /* not sure why but oldval is all that works, newval has a big object in it */
     	  if(newval!="") {
     	    console.log(newval);
       	  if(newval.length>4) {
       	    this.page="SEARCH";
-      	    
       	  }
     	  }
     	},
