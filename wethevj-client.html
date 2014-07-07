@@ -61,28 +61,10 @@
           
           <template repeat="{{video in playlist_videos.items}}">
           <div center horizontal layout center-justified>
-
-              
-              <wethevj-video-item vid="{{vid}}" id="{{vid}}" video="{{video}}" votes="{{votes}}" queue="{{queue}}" unresolved>
-                
-              </wethevj-video-item>
-            
+              <wethevj-video-item vid="{{vid}}" id="{{vid}}" video="{{video}}" votes="{{votes}}" queue="{{queue}}" unresolved></wethevj-video-item>
             <cw-vote vid="{{vid}}" value="{{votes}}"></cw-vote>
           </div>
           </template>
-          
-            <core-animation-group type="seq" id="animGroup"> 
-              <template repeat="{{video in playlist_video_items}}">
-                <core-animation target="document.getElementById('{{vid}}')" easing="ease-in-out" duration="auto">
-                  <core-animation-keyframe>
-                    <core-animation-prop name="opacity" value="0"></core-animation-prop>
-                  </core-animation-keyframe>
-                  <core-animation-keyframe>
-                    <core-animation-prop name="opacity" value="1"></core-animation-prop>
-                  </core-animation-keyframe>
-                </core-animation>
-              </template>
-            </core-animation-group>
             
         </section>
         <section id="explore_page">
@@ -189,8 +171,16 @@
     	pageChanged: function(attr, newval, oldval) {
     	  console.log("Page changed from "+ oldval +" to "+ newval);
     
-        var animation = this.$.animGroup;
-        animation.play();
+        var animationGroup = new AnimationGroup([
+        new AnimationSequence([
+            for(video in playlist_videos.items) {
+              new Animation(this.vid, {duration: 3000})
+            }          
+          ], {duration: 6000, delay: 3000, fill: 'none'}),
+          new Animation(..., {duration: 8000, fill: 'forwards'})
+        ], {iterations: 2, fill: 'forwards'});
+
+        animationGroup.play();
     
     	},
     	connectedChanged: function() {
