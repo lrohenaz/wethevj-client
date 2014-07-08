@@ -87,7 +87,7 @@
       </div>
       
      <!-- /* Video Preview */ -->
-      <paper-dialog heading="Preview" id="preview_{{vid}}" transition="paper-dialog-transition-center">
+      <paper-dialog heading="{{video.title.$t||video.snippet.title}}" id="preview_{{vid}}" transition="paper-dialog-transition-center">
         <object height="350" width="425">
           <param name="movie" value="http://www.youtube.com/v/{{vid}}" />
           <embed height="350" src="http://www.youtube.com/v/{{vid}}?showinfo=no&autoplay=1&&iv_load_policy=3&fs=0&rel=0&showsearch=0&hd=1" type="application/x-shockwave-flash" width="425"></embed>
@@ -96,7 +96,7 @@
       </paper-dialog>
       
       <!-- /* Queue Confirm Preview */ -->
-      <paper-dialog heading="Ready to Play?" id="queueConfirm_{{vid}}" transition="paper-dialog-transition-center">
+      <paper-dialog heading="READY TO PLAY?" id="queueConfirm_{{vid}}" transition="paper-dialog-transition-center">
         <span style="color:orange">Cost: 1 Coin</span><br /><br />
         <span>If you're sure this is the correct video, click 'Play', </span>
           <paper-button label="Cancel" icon="close" dismissive></paper-button>
@@ -104,11 +104,10 @@
       </paper-dialog>
   
       <!-- /* Player Account Info */ -->
-      <paper-dialog heading="User Details" id="acctInfo_{{vid}}" transition="paper-dialog-transition-center">
+      <paper-dialog heading="USER HANDLE" id="acctInfo_{{vid}}" transition="paper-dialog-transition-center">
         <div horizontal layout>
           <img src="{{userIcon}}" style="height:128px;width:128px;"/>
           <div vertical layout>
-            <h1 style="color:orange">USER HANDLE</h1>
             <span>Plays: 57</span><br />
             <span>Votes Received: 62</span><br />
             <span>Comments:432</span><br />
