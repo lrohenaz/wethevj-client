@@ -127,7 +127,7 @@
           <polymer-ajax id="history_yt_ajax" auto url="https://www.googleapis.com/youtube/v3/videos" params='{"id":"{{history_vids}}", "key":"AIzaSyCP-KyJTdtbCJOSE6CHfSH-PvJeJlFVjUc", "part":"snippet"}' handleas="json" on-polymer-response="{{ historyYtResponse }}">
           </polymer-ajax>
           <template repeat="{{video in history_videos.items}}">
-            <wethevj-video-item video="{{video}}" unresolved></wethevj-video-item><br />
+            <wethevj-video-item video="{{video}}" show_user="true" show_voting="false" show_addToQueue="true"></wethevj-video-item><br />
             <core-animation></core-animation>
           </template>
         </section>
