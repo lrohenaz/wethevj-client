@@ -139,19 +139,19 @@
         this.vid = this.video.id;
         this.userIcon = "bower_components/wethevj-client/images/new_user_icon.jpg";
         this.votes=0;
-        if(this.show_voting==true) {
+        if(this.show_voting=='true') {
           console.log("Show voting enabled");
-          this.shadowRoot.querySelector('#voting').setAttribute('display','block');
+          this.shadowRoot.querySelector('#voting').style.display='block';
         }
         else {
           console.log("hide voting");
-          this.shadowRoot.querySelector('#voting').setAttribute('display','none');
+          this.shadowRoot.querySelector('#voting').style.display='none';
         }
-        if(this.show_addToQueue==true) {
+        if(this.show_addToQueue=='true') {
           console.log("Add To Queue Button Enabled");
           this.shadowRoot.querySelector('#addToQueue').setAttribute('resolved','');
         }
-        if(this.show_user==true) {
+        if(this.show_user=='true') {
           console.log("Show User");
           this.shadowRoot.querySelector('#playedBy').setAttribute('resolved','');
         }
