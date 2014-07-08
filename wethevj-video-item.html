@@ -17,7 +17,7 @@
 @homepage https://.../wethevj-video-item
 -->
 
-<polymer-element name="wethevj-video-item" attributes="video queue vid show_voting show_addToQueue">
+<polymer-element name="wethevj-video-item" attributes="video queue vid show_voting show_addToQueue show_user">
   <template id="template">
     <style type="text/css">
     :host {
@@ -70,7 +70,7 @@
     <polymer-ui-card vertical layout unresolved>
       <div horizontal center-justified layout>
           <div class="crop" flex five><img on-click="{{togglePreviewDialog}}" class="ty_img" src="{{video.media$group.media$thumbnail[0].url||video.snippet.thumbnails.medium.url}}" /></div>
-    	    <div vertical center layout flex three style="padding:10px;">
+    	    <div id="playedBy" vertical center layout flex three style="padding:10px;" unresolved>
     	      <h2 style="width:100%;margin-top:-15px;text-align:center;">Played By</h2>
     	      <span style="width:100%; text-align:center;"><img src="{{userIcon}}" id="account_icon" on-click="{{showAccountInfo}}" /></span>
     	    </div>
@@ -146,6 +146,10 @@
         if(this.show_addToQueue==true) {
           console.log("Add To Queue Button Enabled");
           this.shadowRoot.querySelector('#addToQueue').setAttribute('resolved','');
+        }
+        if(this.show_user==true) {
+          console.log("Show User");
+          this.shadowRoot.querySelector('#playedBy').setAttribute('resolved','');
         }
         if(this.video.id.$t) {
           console.log("old school youtube feed detected");
