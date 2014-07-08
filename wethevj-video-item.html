@@ -70,7 +70,7 @@
     <polymer-ui-card vertical layout unresolved>
       <div horizontal center-justified layout>
           <div class="crop" flex five><img on-click="{{togglePreviewDialog}}" class="ty_img" src="{{video.media$group.media$thumbnail[0].url||video.snippet.thumbnails.medium.url}}" /></div>
-    	    <div id="playedBy" style="padding:10px;" vertical center layout flex three unresolved>
+    	    <div id="playedBy" style="padding:10px;" vertical center layout flex three>
     	      <h2 style="width:100%;margin-top:-15px;text-align:center;">Played By</h2>
     	      <span style="width:100%; text-align:center;"><img src="{{userIcon}}" id="account_icon" on-click="{{showAccountInfo}}" /></span>
     	    </div>
