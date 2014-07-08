@@ -26,51 +26,50 @@
 <polymer-element name="wethevj-client" attributes="progress query page channel">
   <template>
     <style type="text/css">
-    :host {
-      font-family:'Roboto';
-      overflow:hidden;
-    }
-    #paperProgress::shadow #progressContainer {
-      margin-top:-13px;
-    
-    }
-    #paperProgress {
-      width:100%;
-    }
-    #paperprogress::shadow #activeProgress {
-      background-color:red;
-      border-bottom:1px solid #000;
-    }
-    #activeProgress::shadow {
-      /* default background-color: #0f9d58; */
-      background-color:lime;
-      border-bottom:1px solid #000;
-    }
-    #core_header_panel {
-      background-color: rgb(255, 255, 255);
-    }
-    #core_toolbar {
-      color: rgb(255, 255, 255);
-      background-color: rgb(79, 125, 201);
-    }
-    #core_menu {
-      font-size: 16px;
-    }
-    #paper_item4 {
-      padding: 5px;
-    }
-    #paper_item1 {
-      padding: 5px;
-    }
-    #paper_item {
-      padding: 5px;
-    }
-    #paper_item2 {
-      padding: 5px;
-    }
-    #paper_item3 {
-      padding: 5px;
-    }
+      :host {
+        font-family:'Roboto';
+        overflow:hidden;
+      }
+      #paperProgress::shadow #progressContainer {
+        margin-top:-13px;
+      
+      }
+      #paperProgress {
+        width:100%;
+      }
+      #paperProgress::shadow #activeProgress {
+        background-color:red;
+        border-bottom:1px solid #000;
+      }
+      #core_header_panel {
+        background-color: rgb(255, 255, 255);
+      }
+      #core_toolbar {
+        color: rgb(255, 255, 255);
+        background-color: rgb(79, 125, 201);
+      }
+      #core_menu {
+        font-size: 16px;
+      }
+      #paper_item4 {
+        padding: 5px;
+      }
+      #paper_item1 {
+        padding: 5px;
+      }
+      #paper_item {
+        padding: 5px;
+      }
+      #paper_item2 {
+        padding: 5px;
+      }
+      #paper_item3 {
+        padding: 5px;
+      }
+      
+      core-scaffold::shadow core-drawer-panel::shadow sore-header-panel::shadow core-toolbar {
+        background-color:#3A3A3A;
+      }
     </style>
     <link rel="stylesheet" type="text/css" href="../../style.css" />
     <content>
@@ -96,7 +95,7 @@
       <core-pages selected="{{ $.core_menu.selectedItem.id }}" selectedindex="0" notap id="core_pages">
         <section id="playlist_page" active>
           <!-- PLAYLIST -->
-          <paper-progress value="{{progress}}" id="paperProgress" style="width:100%; ::shadow.margin-top:-13px;"></paper-progress>
+          <paper-progress value="{{progress}}" id="paperProgress" style="width:100%;"></paper-progress>
           <polymer-ajax id="playlist_ajax" auto url="http://wethevj.com/wethevj/rpc.php" params='{"action":"get_queue", "type" : "json", "channel":"{{channel}}"}' handleas="json" on-polymer-response="{{ playlistResponse }}">
           </polymer-ajax>
             <polymer-ajax id="playlist_yt_ajax" auto url="https://www.googleapis.com/youtube/v3/videos" params='{"id":"{{playlist_vids}}", "key":"AIzaSyCP-KyJTdtbCJOSE6CHfSH-PvJeJlFVjUc", "part":"snippet"}' handleas="json" on-polymer-response="{{ playlistYtResponse }}">
@@ -104,13 +103,14 @@
           
           <template repeat="{{video in playlist_videos.items}}">
           <div center horizontal layout center-justified>
-              <wethevj-video-item video="{{video}}" queue="{{queue}}" unresolved></wethevj-video-item><br />
+              <wethevj-video-item video="{{video}}" queue="{{queue}}" unresolved></wethevj-video-item>
           </div>
           </template>
             
         </section>
         <section id="explore_page">
           <!-- EXPLORE -->
+          <paper-progress value="{{progress}}" id="paperProgress" style="width:100%;"></paper-progress>
           <polymer-ajax id="explore_ajax" url="https://www.googleapis.com/youtube/v3/search" params='{"key":"AIzaSyCP-KyJTdtbCJOSE6CHfSH-PvJeJlFVjUc", "regionCode" : "US", "videoEmbeddable" : "true", "maxResults" : "25", "order" : "rating", "type" : "video", "videoCategoryId" : "10", "part":"snippet"}' handleas="json" on-polymer-response="{{ exploreResponse }}">
           </polymer-ajax>
           
@@ -121,7 +121,7 @@
         </section>
         <section id="history_page">
           <!-- HISTORY -->
-          <paper-progress value="{{progress}}" id="paperProgress" style="width:100%; margin-top:-13px;"></paper-progress>
+          <paper-progress value="{{progress}}" id="paperProgress" style="width:100%;"></paper-progress>
           <polymer-ajax id="history_ajax" url="http://wethevj.com/wethevj/rpc.php" params='{"action":"get_history", "type" : "csv", "filter" : "youtube", "channel":"{{channel}}"}' handleas="json" on-polymer-response="{{ historyResponse }}">
           </polymer-ajax>
           <polymer-ajax id="history_yt_ajax" auto url="https://www.googleapis.com/youtube/v3/videos" params='{"id":"{{history_vids}}", "key":"AIzaSyCP-KyJTdtbCJOSE6CHfSH-PvJeJlFVjUc", "part":"snippet"}' handleas="json" on-polymer-response="{{ historyYtResponse }}">
@@ -133,7 +133,7 @@
         </section>
         <section id="favorites_page">
           <!-- FAVORITES -->
-          <paper-progress value="{{progress}}" id="paperProgress" style="width:100%; margin-top:-13px;"></paper-progress>
+          <paper-progress value="{{progress}}" id="paperProgress" style="width:100%;"></paper-progress>
           <polymer-ajax id="favorites_ajax" url="http://wethevj.com/wethevj/rpc.php" params='{"action":"get_favorites", "type" : "csv", "filter" : "youtube", "channel":"{{channel}}"}' handleas="json" on-polymer-response="{{ favoritesResponse }}">
           </polymer-ajax>
           <polymer-ajax id="favorites_yt_ajax" auto url="https://www.googleapis.com/youtube/v3/videos" params='{"id":"{{history_vids}}", "key":"AIzaSyCP-KyJTdtbCJOSE6CHfSH-PvJeJlFVjUc", "part":"snippet"}' handleas="json" on-polymer-response="{{ favoritesYtResponse }}">
@@ -141,7 +141,7 @@
         </section>
         <section id="chat_page">
           <!-- CHAT -->
-          <paper-progress value="{{progress}}" id="paperProgress" style="width:100%; margin-top:-13px;"></paper-progress>
+          <paper-progress value="{{progress}}" id="paperProgress" style="width:100%;"></paper-progress>
           <polymer-ui-card>
             CHATSSSS
 
@@ -149,13 +149,13 @@
         </section>
         <section id="settings_page">
           <!-- SETTINGS -->
-          <paper-progress value="{{progress}}" id="paperProgress" style="width:100%; margin-top:-13px;"></paper-progress>
+          <paper-progress value="{{progress}}" id="paperProgress" style="width:100%;"></paper-progress>
           <polymer-ajax id="settings_ajax" url="http://gdata.youtube.com/feeds/api/videos/" params='{"alt":"json", "q":"{{$.paper_input.inputValue}}"}' handleas="json" on-polymer-response="{{ settingsResponse }}">
           </polymer-ajax>
         </section>
         <section id="search_page">
           <!-- SEARCH -->
-          <paper-progress value="{{progress}}" id="paperProgress" style="width:100%; margin-top:-13px;"></paper-progress>
+          <paper-progress value="{{progress}}" id="paperProgress" style="width:100%;"></paper-progress>
           <polymer-ajax id="search_ajax" url="http://gdata.youtube.com/feeds/api/videos/" params='{"alt":"json", "q":"{{$.paper_input.inputValue}}"}' handleas="json" on-polymer-response="{{ searchResponse }}">
           </polymer-ajax>
           
