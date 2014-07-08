@@ -61,9 +61,9 @@
     <polymer-ui-card vertical layout unresolved>
       <div horizontal center-justified layout>
           <div class="crop" flex five><img on-click="{{togglePreviewDialog}}" class="ty_img" src="{{video.media$group.media$thumbnail[0].url||video.snippet.thumbnails.medium.url}}" /></div>
-    	    <div vertical center-justified layout flex three style="padding:10px;text-align:center;">
-    	      <h3 style="width:100%;margin-top:-15px;text-align:center;">~ Played By ~</h3>
-    	      <img src="{{userIcon}}" id="account_icon" on-click="{{showAccountInfo}}" flex></paper-button>
+    	    <div vertical center layout flex three style="padding:10px;">
+    	      <h2 style="width:100%;margin-top:-15px;text-align:center;">Played By</h2>
+    	      <span style="width:100%; text-align:center;"><img src="{{userIcon}}" id="account_icon" on-click="{{showAccountInfo}}" /></span>
     	    </div>
     	    <cw-vote id="voting" vid="{{vid}}" value="{{votes}}" flex one></cw-vote>
     	</div>
