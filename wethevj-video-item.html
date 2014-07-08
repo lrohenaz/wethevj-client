@@ -59,7 +59,7 @@
     
     <polymer-ui-card vertical layout unresolved>
       <div horizontal center-justified layout>
-          <div class="crop" flex five><img class="ty_img" src="{{video.media$group.media$thumbnail[0].url||video.snippet.thumbnails.medium.url}}" /></div>
+          <div class="crop" flex five><img on-click="{{togglePreviewDialog}}" class="ty_img" src="{{video.media$group.media$thumbnail[0].url||video.snippet.thumbnails.medium.url}}" /></div>
     	    <div vertical top-justified layout flex three style="padding:10px;">
     	      <h3 style="width:100%;margin-top:-15px;">Played by</h3>
     	      <img src="{{userIcon}}" id="account_icon" on-click="{{showAccountInfo}}" flex></paper-button>
@@ -113,7 +113,7 @@
             <span>Comments:432</span><br />
           </div>
         </div>
-        <div style="height:100px;" horizontal layout flex one>
+        <div style="width:100%; height:100px;" horizontal layout flex one>
           <paper-icon id="account_icon" icon="account-circle"></paper-icon>
           <paper-button icon="close" label="Close" dismissive></paper-button>
           <paper-button icon="add-circle-outline" label="Follow" affirmative default on-click="{{followUser}}"></paper-button>
