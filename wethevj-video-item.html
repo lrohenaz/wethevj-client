@@ -141,7 +141,10 @@
         this.votes=0;
         if(this.show_voting==true) {
           console.log("Show voting enabled");
-          this.shadowRoot.querySelector('#voting').setAttribute('resolved','true');
+          this.shadowRoot.querySelector('#voting').setAttribute('display','block');
+        }
+        else {
+          this.shadowRoot.querySelector('#voting').setAttribute('display','none');
         }
         if(this.show_addToQueue==true) {
           console.log("Add To Queue Button Enabled");
