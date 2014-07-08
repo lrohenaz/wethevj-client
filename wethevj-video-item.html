@@ -46,6 +46,7 @@
       width:80%;
       margin: auto;
       padding: 20px;
+      max-width:700px;
     } 
     cw-vote {
       margin-right: -30px;
@@ -108,7 +109,7 @@
         <span style="color:orange">Cost: 1 Coin</span><br /><br />
         <span>If you're sure this is the correct video, click 'Play', </span>
           <paper-button label="Cancel" icon="close" dismissive></paper-button>
-        <paper-button icon="av:play-arrow" label="Add to Playlist" affirmative default on-click="{{sendToQueue}}"></paper-button>
+        <paper-button icon="av:play-arrow" label="Add to Playlist" on-click="{{sendToQueue}}" affirmative default></paper-button>
       </paper-dialog>
   
       <!-- /* Player Account Info */ -->
