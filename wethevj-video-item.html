@@ -141,22 +141,25 @@
         this.votes=0;
         if(this.show_voting=='true') {
           console.log("Show voting enabled");
-          this.shadowRoot.querySelector('#voting').show();
+          this.shadowRoot.querySelector('#voting').css('display','block');
         }
         else {
           console.log("hide voting");
-          this.shadowRoot.querySelector('#voting').css('visibility','none');
+          this.shadowRoot.querySelector('#voting').css('display','none');
         }
         if(this.show_addToQueue=='true') {
           console.log("Add To Queue Button Enabled");
-          this.shadowRoot.querySelector('#addToQueue').show();
+          this.shadowRoot.querySelector('#addToQueue').css('display','block');
+        }
+        else {
+          this.shadowRoot.querySelector('#addToQueue').css('display','none');  
         }
         if(this.show_user=='true') {
           console.log("Show User");
-          this.shadowRoot.querySelector('#playedBy').show();
+          this.shadowRoot.querySelector('#playedBy').css('display','block');
         }
         else {
-          this.shadowRoot.querySelector('#playedBy').css('visibility','none');
+          this.shadowRoot.querySelector('#playedBy').css('display','none');
         }
         if(this.video.id.$t) {
           console.log("old school youtube feed detected");
