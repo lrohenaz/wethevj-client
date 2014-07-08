@@ -145,7 +145,7 @@
         }
         else {
           console.log("hide voting");
-          this.shadowRoot.querySelector('#voting').hide();
+          this.shadowRoot.querySelector('#voting').css('visibility','none');
         }
         if(this.show_addToQueue=='true') {
           console.log("Add To Queue Button Enabled");
@@ -156,7 +156,7 @@
           this.shadowRoot.querySelector('#playedBy').show();
         }
         else {
-          this.shadowRoot.querySelector('#playedBy').hide();
+          this.shadowRoot.querySelector('#playedBy').css('visibility','none');
         }
         if(this.video.id.$t) {
           console.log("old school youtube feed detected");
